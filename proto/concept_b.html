@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bapper — the drawing set | AI systems that remove bottlenecks | Sparta, MI</title>
+<meta name="description" content="Bapper builds custom AI systems and automations for West Michigan businesses. Free assessment, fixed-scope pilot, proven before you pay. Sparta, Michigan.">
+<link rel="icon" href="../assets/mark_b.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+(function(){var d=document.documentElement;d.className+=" js";
+if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){d.className+=" gsap";}
+setTimeout(function(){if(!window.gsap){d.className=d.className.replace(" gsap","");}},2500);})();
+</script>
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#fafbfd;
+  --panel:#f1f4fa;
+  --ink:#0b1633;
+  --electric:#0160fe;
+  --white:#ffffff;
+  --line:rgba(11,22,51,.16);
+  --line-2:rgba(11,22,51,.30);
+  --grid-fine:rgba(1,96,254,.055);
+  --grid-bold:rgba(1,96,254,.10);
+  --dim:rgba(11,22,51,.62);
+  --dimmer:rgba(11,22,51,.44);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html:not(.reduced){scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid-fine) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-fine) 1px,transparent 1px),
+    linear-gradient(var(--grid-bold) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-bold) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+  background-position:0 0,0 0,0 0,0 0;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  overflow-x:clip;
+}
+section[id]{scroll-margin-top:74px}
+img{max-width:100%;display:block}
+a{color:var(--electric);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4,h5{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.08}
+p{margin:0}
+.mono{font-family:var(--mono)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--electric);outline-offset:3px}
+
+/* ============ shell ============ */
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 20px}
+@media (min-width:860px){.wrap{padding:0 40px}}
+
+/* ============ top bar ============ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,251,253,.90);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topin{display:flex;align-items:center;gap:14px;height:58px}
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand img{height:22px;width:auto}
+.ixset{display:none;gap:0;margin-left:12px;flex:1 1 auto;min-width:0}
+@media (min-width:1080px){.ixset{display:flex}}
+.ix{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;
+  color:var(--dim);padding:6px 12px;border-left:1px solid var(--line);white-space:nowrap;
+}
+.ix:last-child{border-right:1px solid var(--line)}
+.ix b{color:var(--electric);font-weight:600;margin-right:6px}
+.ix:hover{text-decoration:none;color:var(--ink);background:var(--panel)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--electric);color:#fff;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;
+  padding:11px 16px;border:1px solid var(--electric);border-radius:2px;
+  transition:background .18s ease,transform .18s ease;
+}
+.btn:hover{text-decoration:none;background:#014fd0;border-color:#014fd0}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn.ghost:hover{background:var(--panel);border-color:var(--ink)}
+.btn.on-dark{background:var(--electric);border-color:var(--electric)}
+.topbar .btn{margin-left:auto;padding:9px 13px;font-size:10.5px}
+.topbar .btn span.long{display:none}
+@media (min-width:560px){.topbar .btn span.long{display:inline}}
+
+/* ============ sheets ============ */
+.sheet{padding:0 0 8px}
+.sheetframe{
+  position:relative;
+  border:1px solid var(--line-2);
+  background:rgba(255,255,255,.62);
+  padding:20px 16px 28px;
+  margin:22px 0;
+}
+@media (min-width:860px){.sheetframe{padding:26px 30px 40px;margin:34px 0}}
+.sheetframe::before,.sheetframe::after{
+  content:"";position:absolute;width:9px;height:9px;border:1px solid var(--line-2);
+  background:var(--paper);
+}
+.sheetframe::before{left:-5px;top:-5px}
+.sheetframe::after{right:-5px;bottom:-5px}
+.s-head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;
+  border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:26px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dimmer);
+}
+.s-head .no{color:var(--electric);font-weight:600}
+.s-head .nm{color:var(--ink);font-weight:500}
+.s-head .rev{margin-left:auto}
+@media (max-width:600px){.s-head .rev{margin-left:0}}
+.kick{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--electric);display:flex;align-items:center;gap:9px;margin-bottom:14px;
+}
+.kick i{display:block;width:22px;height:2px;background:var(--electric);flex:0 0 auto}
+h2.big{font-size:clamp(27px,6.4vw,52px);letter-spacing:-.03em;max-width:19ch}
+h3.mid{font-size:clamp(23px,4.6vw,38px);letter-spacing:-.028em;max-width:22ch}
+.lead{margin-top:16px;font-size:clamp(15px,2.1vw,18px);color:var(--dim);max-width:56ch}
+.sub{margin-top:10px;color:var(--dim);max-width:60ch;font-size:15px}
+.note-fine{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--dimmer);letter-spacing:.02em}
+
+/* ============ hero / sheet 1 ============ */
+#sheet1 .sheetframe{margin-top:18px}
+.pin{will-change:transform}
+.hero-grid{display:grid;gap:30px}
+@media (min-width:1000px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:52px;align-items:start}
+}
+.loc{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:18px;display:flex;align-items:center;gap:8px;
+}
+.loc i{width:6px;height:6px;background:var(--electric);border-radius:50%;display:block}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.dimrow{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--dimmer);
+}
+.dimrow i{flex:1 1 24px;min-width:24px;height:1px;background:var(--line-2);position:relative}
+.dimrow i::before,.dimrow i::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--line-2)}
+.dimrow i::before{left:0}.dimrow i::after{right:0}
+.capacity{
+  margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--dim);
+  border-left:2px solid var(--electric);padding-left:10px;
+}
+.capacity b{color:var(--ink);font-weight:600}
+
+/* work order */
+.wo{
+  border:1.5px solid var(--ink);background:var(--white);
+  box-shadow:6px 6px 0 rgba(11,22,51,.07);
+  position:relative;overflow:hidden;
+}
+.wo-head{
+  display:flex;justify-content:space-between;gap:14px;padding:13px 15px;
+  border-bottom:1.5px solid var(--ink);background:var(--panel);
+}
+.wo-head .who{font-family:var(--mono);font-size:11px;letter-spacing:.10em;text-transform:uppercase;font-weight:600}
+.wo-head .who small{display:block;font-weight:400;letter-spacing:.06em;color:var(--dim);margin-top:4px;text-transform:none;font-size:11px}
+.wo-head .meta{font-family:var(--mono);font-size:9.5px;line-height:1.65;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);text-align:right}
+.wo-body{padding:0 15px}
+.wo-row{
+  display:flex;gap:14px;align-items:flex-start;justify-content:space-between;
+  padding:13px 0;border-bottom:1px dashed var(--line);
+}
+.wo-row .it{min-width:0}
+.it-name{
+  font-size:16px;font-weight:700;letter-spacing:-.015em;display:inline-block;min-height:1.2em;
+}
+.wo-row.typing .it-name::after{
+  content:"";display:inline-block;width:.42em;height:.92em;background:var(--electric);
+  vertical-align:-.09em;margin-left:2px;
+}
+.it-desc{display:block;margin-top:5px;font-size:13px;line-height:1.5;color:var(--dim);max-width:52ch}
+.price{
+  font-family:var(--mono);font-size:14px;font-weight:600;white-space:nowrap;text-align:right;flex:0 0 auto;
+  padding-top:2px;
+}
+.price.free{color:var(--electric)}
+.price.quiet{font-size:11.5px;font-weight:400;color:var(--dim);letter-spacing:.05em;text-transform:uppercase}
+.wo-row.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:2px;padding-top:14px}
+.wo-row.total .it-name{font-size:12px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.wo-row.total .price{font-size:26px;color:var(--electric)}
+.wo-foot{
+  border-top:1.5px solid var(--ink);padding:16px 15px;display:flex;gap:16px;align-items:center;
+  flex-wrap:wrap;background:var(--panel);position:relative;min-height:96px;
+}
+.stamp{
+  flex:0 0 auto;border:2.5px solid var(--electric);color:var(--electric);
+  font-family:var(--mono);font-weight:600;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  padding:8px 12px;transform:rotate(-7deg);line-height:1.25;text-align:center;
+  box-shadow:inset 0 0 0 1px rgba(1,96,254,.30);
+}
+.stamp small{display:block;font-size:8.5px;font-weight:400;letter-spacing:.14em;margin-top:3px;opacity:.75}
+.wo-foot .fine{flex:1 1 220px;font-family:var(--mono);font-size:10.5px;line-height:1.62;color:var(--dim)}
+@media (max-height:1060px) and (min-width:1000px){
+  #sheet1 h1.big{font-size:clamp(27px,3.5vw,42px)}
+  #sheet1 .lead{font-size:16px}
+  .it-name{font-size:15px}
+  .it-desc{font-size:12.5px;line-height:1.45}
+  .wo-row{padding:10px 0}
+  .wo-foot{min-height:82px;padding:13px 15px}
+  #sheet1 .sheetframe{padding:20px 30px 26px}
+  #sheet1 .s-head{margin-bottom:18px}
+}
+
+/* ============ timeline diagram ============ */
+.tl{
+  --h:620px;
+  display:grid;grid-template-columns:58px minmax(0,1fr);gap:0;margin-top:30px;
+}
+.dimtrack{position:relative;height:var(--h)}
+.rail{position:relative;height:var(--h)}
+.railline{position:absolute;left:0;top:0;width:2px;height:100%;background:var(--ink);transform-origin:top center}
+.ev{position:absolute;left:0;top:calc(var(--p) * 1%);width:100%}
+.ev .tick{position:absolute;left:-5px;top:-1px;width:13px;height:2px;background:var(--ink);display:block}
+.ev .stem{display:none}
+.ev .lab{position:absolute;left:16px;top:-9px;width:calc(100% - 20px)}
+.ev .lab b{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--electric);
+  margin-right:7px;white-space:nowrap;
+}
+.ev .lab span{font-size:12.5px;color:var(--dim);line-height:1.25}
+.ev.key .tick{background:var(--electric);height:3px;top:-1.5px}
+.ev.key .lab span{color:var(--ink);font-weight:500}
+.ev.jam .tick{background:var(--electric);left:-9px;width:21px;height:3px;top:-1.5px}
+.dimbar{
+  position:absolute;right:8px;top:calc(var(--a) * 1%);height:calc((var(--b) - var(--a)) * 1%);
+  width:0;border-right:2px solid var(--electric);
+}
+.dimbar::before,.dimbar::after{
+  content:"";position:absolute;right:-5px;width:12px;height:2px;background:var(--electric);
+}
+.dimbar::before{top:0}
+.dimbar::after{bottom:0}
+.dimbar .dl{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--electric);
+  background:var(--paper);padding:3px 0;text-align:right;width:42px;line-height:1.25;
+}
+.dimbar .dl .long{display:none}
+.callout{
+  margin-top:26px;border:1px solid var(--line-2);border-left:3px solid var(--electric);
+  background:rgba(255,255,255,.72);padding:15px 16px;position:relative;
+}
+.callout h5{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--electric);
+  margin-bottom:10px;font-weight:600;
+}
+.callout ul{margin:0;padding:0;list-style:none}
+.callout li{
+  display:flex;gap:10px;padding:5px 0;font-size:13.5px;color:var(--dim);
+  border-bottom:1px dotted var(--line);
+}
+.callout li:last-child{border-bottom:none}
+.callout li b{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink);flex:0 0 54px;letter-spacing:.02em}
+.callout p{font-size:13.5px;color:var(--dim)}
+@media (min-width:860px){
+  .tl{--h:auto;display:block;margin-top:44px}
+  .rail{height:296px;padding:0}
+  .railline{left:0;top:132px;width:100%;height:2px;transform-origin:left center}
+  .ev{left:calc(var(--p) * 1%);top:132px;width:0;height:0}
+  .ev .tick{left:-1px;top:-7px;width:2px;height:15px}
+  .ev.key .tick{width:3px;height:19px;top:-9px;left:-1.5px}
+  .ev.jam .tick{width:3px;height:27px;top:-13px;left:-1.5px}
+  .ev .stem{display:block;position:absolute;left:0;width:1px;background:var(--line-2)}
+  .ev.above .stem{bottom:7px;height:calc(var(--s,1) * 26px)}
+  .ev.below .stem{top:7px;height:calc(var(--s,1) * 26px)}
+  .ev .lab{position:absolute;left:-6px;top:auto;width:158px}
+  .ev.above .lab{bottom:calc(7px + var(--s,1) * 26px);padding-bottom:5px}
+  .ev.below .lab{top:calc(7px + var(--s,1) * 26px);padding-top:5px}
+  .ev .lab b{display:block;margin:0 0 2px}
+  .ev .lab span{display:block;font-size:12.5px}
+  .tl{position:relative}
+  .dimtrack{position:absolute;left:0;top:0;width:100%;height:100%;margin:0;pointer-events:none}
+  .dimbar{
+    left:calc(var(--a) * 1%);width:calc((var(--b) - var(--a)) * 1%);
+    top:236px;right:auto;height:11px;border-right:none;border-top:2px solid var(--electric);
+    background-image:linear-gradient(var(--electric),var(--electric)),linear-gradient(var(--electric),var(--electric));
+    background-size:2px 11px,2px 11px;background-repeat:no-repeat;
+    background-position:left top,right top;
+  }
+  .dimbar::before,.dimbar::after{width:1px;height:104px;top:-104px;right:auto;background:rgba(1,96,254,.38)}
+  .dimbar::before{left:0}
+  .dimbar::after{left:auto;right:0}
+  .dimbar .dl{
+    left:auto;right:0;top:16px;transform:none;width:auto;white-space:nowrap;
+    padding:0;font-size:11px;text-align:right;
+  }
+  .dimbar .dl .long{display:inline}
+  .callout{width:min(480px,52%);margin-left:auto;margin-top:16px}
+  .callout::before{
+    content:"";position:absolute;left:-1px;top:-30px;width:1px;height:30px;background:var(--line-2);
+  }
+}
+
+/* revision cloud wrapper */
+.cloudwrap{position:relative;display:block}
+.cloudwrap svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.cloudwrap svg path{fill:none;stroke:var(--electric);stroke-width:1.4;opacity:.75}
+.revtag{
+  position:absolute;top:-10px;right:-6px;background:var(--electric);color:#fff;
+  font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.12em;padding:2px 6px;
+}
+
+/* ============ parts schedule ============ */
+.schedule{margin-top:30px;border-top:2px solid var(--ink)}
+.sch-head{display:none}
+@media (min-width:860px){
+  .sch-head{
+    display:grid;grid-template-columns:88px 200px minmax(0,1fr) 128px;gap:18px;
+    padding:9px 4px;border-bottom:1px solid var(--line-2);
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);
+  }
+}
+.part{
+  display:grid;grid-template-columns:1fr;gap:6px;padding:16px 4px;border-bottom:1px solid var(--line);
+  position:relative;
+}
+@media (min-width:860px){
+  .part{grid-template-columns:88px 200px minmax(0,1fr) 128px;gap:18px;align-items:baseline;padding:15px 4px}
+}
+.part:hover{background:rgba(1,96,254,.035)}
+.part .mark{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--electric);letter-spacing:.06em}
+.part .nm{font-size:17px;font-weight:700;letter-spacing:-.015em}
+@media (min-width:860px){.part .nm{font-size:16px}}
+.part .removes{font-size:13.5px;color:var(--dim);line-height:1.5}
+.part .removes em{font-style:normal;color:var(--ink);font-weight:500}
+.part .status{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dimmer);
+  justify-self:start;border:1px solid var(--line-2);padding:3px 7px;
+}
+.part .status.hot{color:var(--electric);border-color:rgba(1,96,254,.45)}
+
+/* ============ notes ============ */
+.notes{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--line-2)}
+@media (min-width:760px){.notes{grid-template-columns:1fr 1fr;column-gap:44px}}
+.note{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+.note .n{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--electric);flex:0 0 34px;padding-top:3px;letter-spacing:.05em}
+.note h4{font-size:16px;margin-bottom:5px}
+.note p{font-size:13.5px;color:var(--dim);line-height:1.5}
+
+.proofbox{
+  margin-top:36px;border:1px solid var(--line-2);background:var(--panel);padding:20px 18px;
+}
+@media (min-width:860px){.proofbox{padding:26px 28px}}
+.proofbox h4{font-size:clamp(19px,3vw,26px);letter-spacing:-.02em;max-width:24ch}
+.proofbox p{margin-top:12px;color:var(--dim);font-size:14.5px;max-width:66ch}
+.ledger{
+  margin-top:18px;border:1px solid var(--line-2);background:var(--white);
+  font-family:var(--mono);font-size:11.5px;line-height:1.85;overflow-x:auto;
+}
+.ledger .lg-bar{display:flex;gap:5px;padding:8px 11px;border-bottom:1px solid var(--line)}
+.ledger .lg-bar i{width:8px;height:8px;border-radius:50%;background:var(--line-2);display:block}
+.ledger pre{margin:0;padding:13px 14px;white-space:pre;color:var(--ink)}
+.ledger .c{color:var(--electric)}
+.ledger .d{color:var(--dimmer)}
+
+.studio{display:grid;gap:24px;margin-top:36px}
+@media (min-width:860px){.studio{grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:38px;align-items:start}}
+.photo{position:relative;border:1px solid var(--ink)}
+.photo img{width:100%;height:auto;filter:saturate(.72) contrast(1.03)}
+.photo figcaption{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  border-top:1px solid var(--line);padding:7px 9px;background:var(--white);display:flex;justify-content:space-between;gap:10px;
+}
+.studio blockquote{margin:0;font-size:clamp(15px,2.2vw,17.5px);line-height:1.6;color:var(--ink)}
+.studio blockquote + blockquote{margin-top:14px;color:var(--dim);font-size:15px}
+.sig{
+  margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dimmer);
+  border-top:1px solid var(--line);padding-top:10px;
+}
+
+.qa{margin-top:34px;border-top:1px solid var(--line-2)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{
+  cursor:pointer;list-style:none;padding:15px 30px 15px 0;font-weight:500;font-size:15.5px;position:relative;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{
+  content:"+";position:absolute;right:4px;top:13px;font-family:var(--mono);color:var(--electric);font-size:18px;
+}
+.qa details[open] summary::after{content:"\2013"}
+.qa details p{padding:0 0 16px;color:var(--dim);font-size:14px;max-width:70ch}
+
+/* ============ finale ============ */
+.finale{
+  background:var(--ink);color:#fff;border:1px solid var(--ink);padding:44px 20px 40px;margin:34px 0 0;
+  position:relative;overflow:hidden;
+}
+@media (min-width:860px){.finale{padding:70px 46px 60px}}
+.finale::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.finale > *{position:relative}
+.finale img.wm{width:132px;margin-bottom:26px;opacity:.95}
+.finale h3{font-size:clamp(26px,5.4vw,44px);letter-spacing:-.03em;max-width:16ch;color:#fff}
+.finale p{margin-top:16px;color:rgba(255,255,255,.66);max-width:52ch;font-size:15px}
+.finale p b{color:#fff;font-weight:500}
+.finale .btn{margin-top:26px}
+
+.titleblock{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line-2);border-bottom:none;margin-top:0}
+@media (min-width:760px){.titleblock{grid-template-columns:repeat(6,1fr)}}
+.tb{
+  border-bottom:1px solid var(--line-2);border-right:1px solid var(--line-2);padding:12px 13px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);
+}
+.tb:nth-child(2n){border-right:none}
+@media (min-width:760px){.tb{border-right:1px solid var(--line-2)}.tb:nth-child(2n){border-right:1px solid var(--line-2)}.tb:last-child{border-right:none}}
+.tb b{display:block;margin-top:5px;font-size:12.5px;letter-spacing:.02em;text-transform:none;color:var(--ink);font-weight:600}
+
+footer{border-top:1px solid var(--line);margin-top:0;padding:22px 0 44px}
+.foot{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--dimmer);
+}
+.foot b{color:var(--ink);font-weight:600;letter-spacing:.14em}
+.foot em{font-style:normal;color:var(--dim)}
+.foot .sp{flex:1 1 auto}
+
+/* sheet counter */
+.counter{
+  position:fixed;left:12px;bottom:12px;z-index:40;display:none;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dimmer);
+  background:rgba(250,251,253,.9);border:1px solid var(--line);padding:5px 9px;
+}
+.js .counter{display:block}
+.counter b{color:var(--electric);font-weight:600}
+@media (max-width:520px){.counter{left:8px;bottom:8px;font-size:9px;padding:4px 7px}}
+
+/* ============ gsap initial states (removed if gsap unavailable) ============ */
+.gsap .wo{clip-path:inset(0 0 100% 0)}
+.gsap .wo-row{opacity:.12}
+.gsap .stamp{opacity:0}
+.gsap [data-reveal]{opacity:0;transform:translateY(16px)}
+.gsap .railline{transform:scaleY(0)}
+@media (min-width:860px){.gsap .railline{transform:scaleX(0)}}
+.gsap .ev{opacity:0}
+.gsap .dimbar{opacity:0}
+</style>
+</head>
+<body>
+<a class="skip" href="#sheet1">Skip to the estimate</a>
+
+<header class="topbar">
+  <div class="wrap topin">
+    <a class="brand" href="../index.html" aria-label="Bapper — home"><img src="../assets/lockup_light.png" alt="Bapper"></a>
+    <nav class="ixset" aria-label="Sheet index">
+      <a class="ix" href="#sheet1"><b>01</b>Estimate</a>
+      <a class="ix" href="#sheet2"><b>02</b>Your evening today</a>
+      <a class="ix" href="#sheet3"><b>03</b>Your evening after</a>
+      <a class="ix" href="#sheet4"><b>04</b>What we build</a>
+      <a class="ix" href="#sheet5"><b>05</b>How we work</a>
+    </nav>
+    <a class="btn" href="mailto:hello@bapperstudio.com?subject=Free%20assessment%20for%20my%20business&body=Business%20name%3A%0ACity%3A%0AWhat%20you%20do%3A%0AWebsite%20(if%20any)%3A%20">Free assessment<span class="long"> &rarr;</span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== SHEET 1 — THE ESTIMATE ===================== -->
+<section class="sheet" id="sheet1" data-sheet="01">
+  <div class="pin">
+  <div class="wrap">
+    <div class="sheetframe">
+      <div class="s-head">
+        <span class="no">SHEET 01 / 06</span>
+        <span class="nm">Estimate &mdash; prepared for your business</span>
+        <span>Scale: 1:1</span>
+        <span class="rev">Rev 2026.09 &middot; Sparta, MI</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="loc"><i></i>Sparta, Michigan &middot; serving West Michigan</div>
+          <h1 class="big">Every business has a bottleneck. We build the system that removes it.</h1>
+          <p class="lead">You're great at the work. It's the work around the work that's eating you &mdash; the quotes at 10pm, the tools that don't talk, the call you missed under a furnace. We find the bottleneck first, free, then build the one system that takes it out.</p>
+          <div class="hero-cta">
+            <a class="btn" href="mailto:hello@bapperstudio.com?subject=Free%20assessment%20for%20my%20business&body=Business%20name%3A%0ACity%3A%0AWhat%20you%20do%3A%0AWebsite%20(if%20any)%3A%20">Get my free assessment</a>
+            <a class="btn ghost" href="#sheet4">Read the parts list &darr;</a>
+          </div>
+          <div class="dimrow"><span>no contracts</span><i></i><span>fixed-scope pilots</span><i></i><span>proven before you pay</span></div>
+          <div class="capacity">Taking <b>3 new businesses</b> this month &middot; <b>2 spots left</b> for September.</div>
+        </div>
+
+        <div>
+          <div class="wo" id="wo">
+            <div class="wo-head">
+              <div class="who">Bapper &mdash; work order<small>Prepared for: your business</small></div>
+              <div class="meta">Est. no. 001<br>Sparta, MI &middot; rev 2026.09<br>Valid: always</div>
+            </div>
+            <div class="wo-body">
+              <div class="wo-row" data-row>
+                <div class="it">
+                  <span class="it-name">Business assessment</span>
+                  <span class="it-desc">A written map of where the hours go, where leads leak, and how you show up in Google and in AI answers. Not a sales call.</span>
+                </div>
+                <div class="price free">$0.00</div>
+              </div>
+              <div class="wo-row" data-row>
+                <div class="it">
+                  <span class="it-name">The build plan</span>
+                  <span class="it-desc">Fixed scope, fixed quote, and what &ldquo;working&rdquo; means written down before we start. Build it with someone else and keep the plan.</span>
+                </div>
+                <div class="price free">$0.00</div>
+              </div>
+              <div class="wo-row" data-row>
+                <div class="it">
+                  <span class="it-name">Pilot system</span>
+                  <span class="it-desc">One system, weeks not quarters. Built and handed over by the person who scoped it. You pay when it meets the criteria.</span>
+                </div>
+                <div class="price quiet">quoted on the plan</div>
+              </div>
+              <div class="wo-row" data-row>
+                <div class="it">
+                  <span class="it-name">Run &amp; extend</span>
+                  <span class="it-desc">Maintained and extended by the person who built it. Month to month, no contracts.</span>
+                </div>
+                <div class="price quiet">optional</div>
+              </div>
+              <div class="wo-row total" data-row>
+                <div class="it"><span class="it-name">Total due today</span></div>
+                <div class="price">$0.00</div>
+              </div>
+            </div>
+            <div class="wo-foot">
+              <div class="stamp" id="stamp">Proven before you pay<small>Bapper &middot; Sparta MI</small></div>
+              <div class="fine">Every pilot ships with acceptance criteria agreed up front. Miss them and you keep the map and anything shippable &mdash; no invoice, no hard feelings.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== SHEET 2 — AS-BUILT ===================== -->
+<section class="sheet" id="sheet2" data-sheet="02">
+  <div class="wrap">
+    <div class="sheetframe">
+      <div class="s-head">
+        <span class="no">SHEET 02 / 06</span>
+        <span class="nm">As-built &mdash; your evening today</span>
+        <span>Scale: 6:00a &ndash; 11:45p</span>
+        <span class="rev">Rev 1 &middot; existing conditions</span>
+      </div>
+
+      <div data-reveal>
+        <div class="kick"><i></i>Existing conditions</div>
+        <h3 class="mid">The job ends at 6:30. The business doesn't.</h3>
+        <p class="sub">Measured the way you'd measure a run of duct. Every tick is real work; the last stretch is the part nobody quotes for.</p>
+      </div>
+
+      <div class="tl" data-tl>
+        <div class="dimtrack">
+          <div class="dimbar" style="--a:88.9;--b:98.6" data-dim>
+            <span class="dl">1h 43m<span class="long"> &middot; admin, after hours</span></span>
+          </div>
+        </div>
+        <div class="rail">
+          <i class="railline" data-rail></i>
+
+          <div class="ev above" style="--p:0.9;--s:2.1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>6:10a</b><span>First call of the day.</span></div>
+          </div>
+          <div class="ev below" style="--p:5.6;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>7:00a</b><span>On the job.</span></div>
+          </div>
+          <div class="ev above key" style="--p:36.6;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>12:30p</b><span>A quote request comes in. It sits.</span></div>
+          </div>
+          <div class="ev below key" style="--p:60.6;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>4:45p</b><span>Two calls missed under a furnace.</span></div>
+          </div>
+          <div class="ev above" style="--p:70.4;--s:2.1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>6:30p</b><span>Dinner. Phone face-down.</span></div>
+          </div>
+          <div class="ev jam" style="--p:88.9"><i class="tick"></i></div>
+          <div class="ev jam" style="--p:91.9"><i class="tick"></i></div>
+          <div class="ev jam" style="--p:95.3"><i class="tick"></i></div>
+          <div class="ev jam" style="--p:98.6"><i class="tick"></i></div>
+        </div>
+      </div>
+
+      <div class="callout" data-reveal>
+        <h5>Detail A &mdash; the after-hours block</h5>
+        <ul>
+          <li><b>9:47p</b>Quotes. The one from 12:30 is still open.</li>
+          <li><b>10:20p</b>Invoices, retyped out of a second app.</li>
+          <li><b>10:55p</b>The email you forgot. Somebody said we'd call back.</li>
+          <li><b>11:30p</b>Bed.</li>
+        </ul>
+      </div>
+
+      <p class="sub" data-reveal style="margin-top:22px;font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--dimmer)">
+        NOTE: the bottleneck is never the job. It's everything after the job. Five subscriptions, none of them talking. Leads that only arrive when somebody remembers to refer you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHEET 3 — PROPOSED ===================== -->
+<section class="sheet" id="sheet3" data-sheet="03">
+  <div class="wrap">
+    <div class="sheetframe">
+      <div class="s-head">
+        <span class="no">SHEET 03 / 06</span>
+        <span class="nm">Proposed &mdash; your evening after</span>
+        <span>Scale: 6:00a &ndash; 11:45p</span>
+        <span class="rev">Rev 2 &middot; one system, same day</span>
+      </div>
+
+      <div data-reveal>
+        <div class="kick"><i></i>Proposed condition</div>
+        <h3 class="mid">Same day. Same truck. The evening comes back.</h3>
+        <p class="sub">Nothing on the job changed. One system took the work around the work: the quote answers itself, the phone gets answered, the invoice fires when the job closes, the follow-up goes out on schedule.</p>
+      </div>
+
+      <div class="tl" data-tl>
+        <div class="dimtrack">
+          <div class="dimbar" style="--a:88.9;--b:98.6" data-dim>
+            <span class="dl">1h 43m<span class="long"> &middot; returned to you</span></span>
+          </div>
+        </div>
+        <div class="rail">
+          <i class="railline" data-rail></i>
+
+          <div class="ev above" style="--p:0.9;--s:2.1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>6:10a</b><span>First call of the day.</span></div>
+          </div>
+          <div class="ev below" style="--p:5.6;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>7:00a</b><span>On the job.</span></div>
+          </div>
+          <div class="ev above key" style="--p:36.99;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>12:34p</b><span>The quote went out. You were on a roof.</span></div>
+          </div>
+          <div class="ev below key" style="--p:60.6;--s:1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>4:45p</b><span>Both calls answered, in your voice.</span></div>
+          </div>
+          <div class="ev above" style="--p:70.4;--s:2.1"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>6:30p</b><span>Dinner. Phone still face-down.</span></div>
+          </div>
+          <div class="ev below key" style="--p:88.9;--s:1.9"><i class="tick"></i><i class="stem"></i>
+            <div class="lab"><b>9:47p</b><span>Couch.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout cloudwrap" data-reveal data-cloud>
+        <span class="revtag">REV 2</span>
+        <h5>Detail A &mdash; revised</h5>
+        <p>The invoice sent itself when the job closed. The follow-up went out Thursday, like it always does now. Nothing was retyped. Nobody was told we'd call back.</p>
+        <p style="margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--electric);letter-spacing:.03em">
+          DELTA: 1 hr 43 min / day &middot; one quote answered same-hour &middot; two calls not lost
+        </p>
+      </div>
+
+      <p class="sub" data-reveal style="margin-top:22px">This is what a pilot looks like on paper before it exists. The assessment tells us which stretch of your day to redraw first &mdash; and it's free.</p>
+      <div class="hero-cta" data-reveal>
+        <a class="btn" href="mailto:hello@bapperstudio.com?subject=Free%20assessment%20for%20my%20business&body=Business%20name%3A%0ACity%3A%0AWhat%20you%20do%3A%0AWebsite%20(if%20any)%3A%20">Map my evening, free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHEET 4 — PARTS SCHEDULE ===================== -->
+<section class="sheet" id="sheet4" data-sheet="04">
+  <div class="wrap">
+    <div class="sheetframe">
+      <div class="s-head">
+        <span class="no">SHEET 04 / 06</span>
+        <span class="nm">Parts schedule &mdash; what we build</span>
+        <span>Six marks</span>
+        <span class="rev">Rev 2026.09</span>
+      </div>
+
+      <div data-reveal>
+        <div class="kick"><i></i>Schedule of parts</div>
+        <h3 class="mid">Six ways we remove bottlenecks.</h3>
+        <p class="sub">Every one of these runs on our own operation first &mdash; daily, logged, counted. You get the mark that fits your bottleneck, not the catalogue.</p>
+      </div>
+
+      <div class="schedule">
+        <div class="sch-head"><span>Mark</span><span>Item</span><span>What it removes</span><span>Status</span></div>
+
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;01</span>
+          <span class="nm">Workflow automation</span>
+          <span class="removes"><em>Quotes, invoices, scheduling, follow-ups</em> done by hand after dinner. A system that never forgets does them the moment they're triggered.</span>
+          <span class="status">In use here</span>
+        </div>
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;02</span>
+          <span class="nm">AI assistants</span>
+          <span class="removes"><em>The inbox and the phone</em> answered in your voice, with your prices, your documents, your history &mdash; not a script.</span>
+          <span class="status">In use here</span>
+        </div>
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;03</span>
+          <span class="nm">Integrations</span>
+          <span class="removes"><em>Retyping the same job into five tools.</em> We connect what you already pay for so nothing falls between two apps.</span>
+          <span class="status">In use here</span>
+        </div>
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;04</span>
+          <span class="nm">Marketing systems</span>
+          <span class="removes"><em>The monthly invoice you can't measure.</em> Ads, Google rankings, and AI answers run with pass/fail rules and numbers you can read.</span>
+          <span class="status hot">Prove-it-first</span>
+        </div>
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;05</span>
+          <span class="nm">Websites &amp; pages</span>
+          <span class="removes"><em>The click that had nowhere to go.</em> Fast pages that turn a search into a call. Built in days &mdash; like this one.</span>
+          <span class="status">In use here</span>
+        </div>
+        <div class="part" data-reveal>
+          <span class="mark">SVC&ndash;06</span>
+          <span class="nm">Data &amp; dashboards</span>
+          <span class="removes"><em>Six logins and a gut feeling.</em> Jobs, cash, leads, and what's actually working &mdash; your whole business on one screen.</span>
+          <span class="status">In use here</span>
+        </div>
+      </div>
+
+      <p class="note-fine" data-reveal style="margin-top:20px">
+        SPECIFICATION: one mark per pilot. We'd rather ship one that works than six that mostly do.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHEET 5 — GENERAL NOTES ===================== -->
+<section class="sheet" id="sheet5" data-sheet="05">
+  <div class="wrap">
+    <div class="sheetframe">
+      <div class="s-head">
+        <span class="no">SHEET 05 / 06</span>
+        <span class="nm">General notes &mdash; how we work</span>
+        <span>Notes 01&ndash;06</span>
+        <span class="rev">Rev 2026.09</span>
+      </div>
+
+      <div data-reveal>
+        <div class="kick"><i></i>General notes</div>
+        <h3 class="mid">A few things we hold ourselves to.</h3>
+      </div>
+
+      <div class="notes">
+        <div class="note" data-reveal><span class="n">N01</span><div><h4>Start with your workflow, not our tools.</h4><p>We learn how the business actually runs before suggesting anything. The right system is usually smaller than people expect.</p></div></div>
+        <div class="note" data-reveal><span class="n">N02</span><div><h4>Write the criteria before we start.</h4><p>What "working" means gets agreed up front, in plain language, so nobody argues about it later.</p></div></div>
+        <div class="note" data-reveal><span class="n">N03</span><div><h4>Show our numbers, good or bad.</h4><p>Runs, costs, outcomes &mdash; logged and shared. If something isn't performing, you hear it from us first.</p></div></div>
+        <div class="note" data-reveal><span class="n">N04</span><div><h4>Say no when it isn't worth building.</h4><p>Some bottlenecks are better solved with a checklist than a system. We'll tell you when that's the case, free.</p></div></div>
+        <div class="note" data-reveal><span class="n">N05</span><div><h4>Keep it in your accounts.</h4><p>Your data, your logins, your ad spend. We work inside what you already own, with scoped access you can see.</p></div></div>
+        <div class="note" data-reveal><span class="n">N06</span><div><h4>Stay close to the work.</h4><p>Small studio. The person you talk to is the person who builds &mdash; and answers within a day.</p></div></div>
+      </div>
+
+      <div class="proofbox" data-reveal>
+        <div class="kick"><i></i>Note on proof</div>
+        <h4>No case studies yet. We're new, and we won't fake them.</h4>
+        <p>What we can show you instead is the machinery, running in public: the research pipelines that write your assessment, a build log where every run has a cost and an outcome, pass/fail rules on every pilot, and a tracker for what ChatGPT, Perplexity and Gemini say when someone asks about a business like yours. This log fills in public, from zero.</p>
+        <div class="ledger">
+          <div class="lg-bar"><i></i><i></i><i></i></div>
+<pre><span class="d">$</span> python buildlog.py report
+<span class="c">systems in production</span>   research &middot; content &middot; monitoring &middot; outreach
+<span class="c">every run logged</span>        cost &middot; outcome &middot; keep or kill
+<span class="c">every pilot judged</span>      against criteria written before we start
+<span class="d">--</span> this log fills in public, from zero.</pre>
+        </div>
+      </div>
+
+      <div class="studio">
+        <figure class="photo" data-reveal style="margin:0">
+          <img src="../assets/office_hero.jpg" alt="The Bapper workspace in Sparta, Michigan" loading="lazy" width="1200" height="800">
+          <figcaption><span>Photo ref. A</span><span>Sparta, MI</span></figcaption>
+        </figure>
+        <div data-reveal>
+          <div class="kick"><i></i>Who you'll work with</div>
+          <blockquote>Bapper is a small studio run out of Sparta, Michigan by Jason, who spent years building AI systems for his own work &mdash; research pipelines, content tools, agents that run overnight &mdash; before offering that work to other businesses.</blockquote>
+          <blockquote>Being small means there's no handoff between the person you talk to and the person who builds. It also means we're honest about fit: if a problem is bigger than what we should take on, or simpler than a system, we say so.</blockquote>
+          <div class="sig">Bapper &middot; Sparta, MI &middot; serving West Michigan</div>
+        </div>
+      </div>
+
+      <div class="qa" data-reveal>
+        <details><summary>What's in the free assessment?</summary><p>A written map of your business: where the hours go, where leads leak, how you show up in Google and in AI answers, and the one system worth building first. Keep it, act on it yourself, or ask us to. It isn't a disguised sales call.</p></details>
+        <details><summary>What does a pilot cost?</summary><p>A fixed quote from the assessment map &mdash; no hourly meters. Weeks, not quarters. Acceptance criteria are written before we start, and you pay when the system meets them.</p></details>
+        <details><summary>What if it doesn't work?</summary><p>The criteria are agreed up front. Miss them and the engagement ends there &mdash; you keep the map and anything shippable, with no invoice.</p></details>
+        <details><summary>Do you do marketing too?</summary><p>Yes &mdash; ads, Google rankings, and AI answers, run as a measured system with pass/fail rules, the same way we run everything else.</p></details>
+        <details><summary>What about our data?</summary><p>Scoped access, your accounts, and local-first options where the work allows it. Nothing leaves your systems that doesn't have to, and you can see exactly what does.</p></details>
+        <details><summary>Where are you actually located?</summary><p>Sparta, Michigan &mdash; north of Grand Rapids. We serve West Michigan. If you want to meet the person doing the work over coffee before anything starts, that's normal here.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHEET 6 — ISSUE FOR CONSTRUCTION ===================== -->
+<section class="sheet" id="sheet6" data-sheet="06">
+  <div class="wrap">
+    <div class="finale" data-reveal>
+      <img class="wm" src="../assets/wordmark_white_text.png" alt="Bapper">
+      <h3>The next free assessment could be yours.</h3>
+      <p>Hit the button, or write to <b>hello@bapperstudio.com</b> &mdash; answered within a day by the person who does the work.</p>
+      <a class="btn on-dark" href="mailto:hello@bapperstudio.com?subject=Free%20assessment%20for%20my%20business&body=Business%20name%3A%0ACity%3A%0AWhat%20you%20do%3A%0AWebsite%20(if%20any)%3A%20">Get my free assessment</a>
+    </div>
+    <div class="titleblock">
+      <div class="tb">Studio<b>Bapper</b></div>
+      <div class="tb">Location<b>Sparta, MI</b></div>
+      <div class="tb">Serving<b>West Michigan</b></div>
+      <div class="tb">Set<b>6 sheets</b></div>
+      <div class="tb">Revision<b>2026.09</b></div>
+      <div class="tb">Approved<b>When it works</b></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <b>Bapper</b>
+    <em>Work that hits.</em>
+    <span class="sp"></span>
+    <span>hello@bapperstudio.com</span>
+    <span>Sparta, Michigan</span>
+  </div>
+</footer>
+
+<div class="counter" aria-hidden="true">Sheet <b id="ctr">01</b> / 06</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  var REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (REDUCED) root.classList.add("reduced");
+
+  /* ---------- sheet counter (works with or without gsap) ---------- */
+  (function counter(){
+    var out = document.getElementById("ctr");
+    if (!out || !("IntersectionObserver" in window)) return;
+    var secs = document.querySelectorAll("[data-sheet]");
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && e.intersectionRatio > 0.16) out.textContent = e.target.getAttribute("data-sheet");
+      });
+    }, { threshold:[0.17, 0.5] });
+    secs.forEach(function(s){ io.observe(s); });
+  })();
+
+  /* ---------- revision cloud path, drawn to fit its box ---------- */
+  function cloudPath(w, h, r){
+    var d = "", x, y, i, n, step;
+    d += "M 0 0";
+    n = Math.max(2, Math.round(w / (r * 1.9))); step = w / n;
+    for (i = 0; i < n; i++){ x = (i + 1) * step; d += " A " + (step/2) + " " + (step/2) + " 0 0 1 " + x.toFixed(1) + " 0"; }
+    n = Math.max(2, Math.round(h / (r * 1.9))); step = h / n;
+    for (i = 0; i < n; i++){ y = (i + 1) * step; d += " A " + (step/2) + " " + (step/2) + " 0 0 1 " + w.toFixed(1) + " " + y.toFixed(1); }
+    n = Math.max(2, Math.round(w / (r * 1.9))); step = w / n;
+    for (i = 0; i < n; i++){ x = w - (i + 1) * step; d += " A " + (step/2) + " " + (step/2) + " 0 0 1 " + x.toFixed(1) + " " + h.toFixed(1); }
+    n = Math.max(2, Math.round(h / (r * 1.9))); step = h / n;
+    for (i = 0; i < n; i++){ y = h - (i + 1) * step; d += " A " + (step/2) + " " + (step/2) + " 0 0 1 0 " + y.toFixed(1); }
+    return d + " Z";
+  }
+  var clouds = [];
+  function buildClouds(){
+    document.querySelectorAll("[data-cloud]").forEach(function(el){
+      var svg = el.querySelector("svg.rev-cloud");
+      if (!svg){
+        svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+        svg.setAttribute("class","rev-cloud");
+        svg.setAttribute("aria-hidden","true");
+        var p = document.createElementNS("http://www.w3.org/2000/svg","path");
+        svg.appendChild(p); el.appendChild(svg);
+      }
+      var path = svg.querySelector("path");
+      var w = el.offsetWidth, h = el.offsetHeight, pad = 9;
+      if (!w || !h) return;
+      svg.setAttribute("viewBox", "0 0 " + (w + pad*2) + " " + (h + pad*2));
+      svg.style.left = -pad + "px"; svg.style.top = -pad + "px";
+      svg.style.width = (w + pad*2) + "px"; svg.style.height = (h + pad*2) + "px";
+      path.setAttribute("transform","translate(1,1)");
+      path.setAttribute("d", cloudPath(w + pad*2 - 2, h + pad*2 - 2, 9));
+      if (clouds.indexOf(path) === -1) clouds.push(path);
+    });
+  }
+  buildClouds();
+  var rt; window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(buildClouds, 200); });
+
+  /* ---------- animation (only if GSAP actually landed) ---------- */
+  if (!window.gsap || !window.ScrollTrigger || REDUCED){
+    root.classList.remove("gsap");
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* --- sheet 1: the estimate writes itself, then the stamp lands --- */
+  var rows = Array.prototype.map.call(document.querySelectorAll("[data-row]"), function(r){
+    var name = r.querySelector(".it-name"), price = r.querySelector(".price");
+    var desc = r.querySelector(".it-desc");
+    return { row:r, name:name, nameText:name.textContent, price:price, desc:desc };
+  });
+
+  function buildEstimate(scrubbed){
+    rows.forEach(function(o){
+      o.name.textContent = "";
+      gsap.set(o.price, { opacity:0, y:6 });
+      if (o.desc) gsap.set(o.desc, { opacity:0 });
+    });
+    gsap.set("#stamp", { opacity:0, scale:2.7, rotate:-24 });
+
+    var st = { trigger:"#sheet1" };
+    if (scrubbed){
+      st.start = "top 60px"; st.end = "+=2400"; st.pin = "#sheet1 .pin"; st.scrub = 0.55; st.anticipatePin = 1;
+    } else {
+      st.start = "top 85%"; st.once = true; st.toggleActions = "play none none none";
+    }
+
+    var tl = gsap.timeline({ scrollTrigger: st, defaults:{ ease:"none" }, paused: !scrubbed });
+
+    tl.fromTo("#wo", { clipPath:"inset(0 0 100% 0)" }, { clipPath:"inset(0 0 0% 0)", duration:0.6, ease:"power2.out" }, 0);
+
+    rows.forEach(function(o, i){
+      var at = 0.55 + i * 0.92;
+      tl.to(o.row, { opacity:1, duration:0.18 }, at);
+      var prox = { p:0 };
+      tl.to(prox, {
+        p:1, duration:0.52,
+        onUpdate:function(){
+          var n = Math.round(prox.p * o.nameText.length);
+          o.name.textContent = o.nameText.slice(0, n);
+          var mid = prox.p > 0.001 && prox.p < 0.999;
+          o.row.classList.toggle("typing", mid);
+        },
+        onComplete:function(){ o.name.textContent = o.nameText; o.row.classList.remove("typing"); },
+        onReverseComplete:function(){ o.name.textContent = ""; o.row.classList.remove("typing"); }
+      }, at);
+      if (o.desc) tl.to(o.desc, { opacity:1, duration:0.3 }, at + 0.34);
+      tl.to(o.price, { opacity:1, y:0, duration:0.24, ease:"power2.out" }, at + 0.46);
+    });
+
+    var stampAt = 0.55 + rows.length * 0.92 + 0.2;
+    tl.to("#stamp", { opacity:1, duration:0.12 }, stampAt);
+    tl.to("#stamp", { scale:1, rotate:-7, duration:0.42, ease:"power4.in" }, stampAt);
+    tl.fromTo("#wo", { y:0 }, { y:-4, duration:0.07, yoyo:true, repeat:1, ease:"none" }, stampAt + 0.42);
+    tl.to({}, { duration:0.7 }, stampAt + 0.5);
+
+    if (!scrubbed){ tl.timeScale(1.55); gsap.delayedCall(0.35, function(){ tl.play(); }); }
+
+    return function cleanup(){
+      tl.scrollTrigger && tl.scrollTrigger.kill();
+      tl.kill();
+      rows.forEach(function(o){
+        o.name.textContent = o.nameText;
+        o.row.classList.remove("typing");
+        gsap.set([o.row, o.price, o.desc].filter(Boolean), { clearProps:"all" });
+      });
+      gsap.set(["#wo","#stamp"], { clearProps:"all" });
+    };
+  }
+
+  var mm = gsap.matchMedia();
+  mm.add("(min-width:1140px) and (min-height:860px)", function(){ return buildEstimate(true); });
+  mm.add("(max-width:1139px), (max-height:859px)", function(){ return buildEstimate(false); });
+
+  /* --- sheets 2 & 3: the diagrams draw themselves --- */
+  document.querySelectorAll("[data-tl]").forEach(function(tlEl){
+    var rail = tlEl.querySelector("[data-rail]");
+    var evs = tlEl.querySelectorAll(".ev");
+    var dim = tlEl.querySelector("[data-dim]");
+    var t = gsap.timeline({ scrollTrigger:{ trigger:tlEl, start:"top 82%", end:"top 26%", scrub:0.6 } });
+    t.to(rail, { scaleX:1, scaleY:1, duration:0.9, ease:"power2.out" }, 0);
+    t.to(evs, { opacity:1, duration:0.5, stagger:0.14, ease:"power1.out" }, 0.35);
+    if (dim) t.fromTo(dim, { opacity:0, scaleX:0.02, scaleY:0.02 },
+      { opacity:1, scaleX:1, scaleY:1, duration:0.6, ease:"power2.out", transformOrigin:"left top" }, 1.2);
+  });
+
+  /* --- generic sheet reveals --- */
+  gsap.utils.toArray("[data-reveal]").forEach(function(el){
+    gsap.to(el, {
+      opacity:1, y:0, duration:0.62, ease:"power2.out",
+      scrollTrigger:{ trigger:el, start:"top 88%", once:true }
+    });
+  });
+
+  /* --- revision cloud draws on --- */
+  clouds.forEach(function(path){
+    var len = 0;
+    try { len = path.getTotalLength(); } catch(e){ len = 0; }
+    if (!len) return;
+    gsap.fromTo(path,
+      { strokeDasharray:len, strokeDashoffset:len },
+      { strokeDashoffset:0, duration:1.6, ease:"power1.inOut",
+        scrollTrigger:{ trigger:path.closest("[data-cloud]"), start:"top 80%", once:true } });
+  });
+
+  window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
