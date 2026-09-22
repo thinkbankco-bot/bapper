@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Send it in writing — Bapper</title>
+<meta name="description" content="Six lines and you're done. Or skip the form and call — that's a cell, not an office. Bapper, Sparta, Michigan.">
+<link rel="canonical" href="https://bapperlabs.com/start.html">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/mark_b.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Send it in writing — Bapper">
+<meta property="og:description" content="Six lines and you're done. Or skip the form and call — that's a cell, not an office.">
+<meta property="og:image" content="https://bapperlabs.com/assets/og_card.png">
+<meta property="og:url" content="https://bapperlabs.com/start.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="styles.css?v=20260914a">
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="index.html"><img class="lockup" src="assets/lockup_light.png" alt="Bapper"></a>
+  <a class="item" href="ai-systems.html">Systems</a>
+  <a class="item" href="growth.html">Getting found</a>
+  <a class="item" href="about.html">About</a>
+  <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
+</div></header>
+
+<main>
+<div class="wrap hero" style="padding-bottom:40px">
+  <div class="kicker"><span class="slash sm"></span>IN WRITING</div>
+  <h1 style="font-size:clamp(30px,5vw,52px)">Six lines and you're done.</h1>
+  <p class="lead">The phone is faster and it's the same person on the other end either way. If you'd rather type it, type it &mdash; I answer these the same day.</p>
+  <div class="cta-row">
+    <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
+  </div>
+  <p class="cta-note">That's a cell, not an office. If I'm on a roof you'll get a text back in a minute &mdash; that's the thing I sell.</p>
+</div>
+
+<section><div class="wrap">
+
+  <!-- Until the Apps Script web app is deployed (ops/apps_script_form.gs), data-endpoint is
+       empty and the script below hands the filled form to the visitor's SMS app (or mail on
+       desktop) so no lead evaporates. When Jason sends the deployment id, set
+       data-endpoint="https://script.google.com/macros/s/DEPLOYMENT_ID/exec" and the fetch()
+       POST path takes over. Without JS the form submits to the same fallback via mailto. -->
+  <form class="frm" id="start-form" method="post" accept-charset="utf-8"
+        action="mailto:thinkbankco@gmail.com?subject=Bapper%20start" enctype="text/plain"
+        data-endpoint="">
+
+    <label class="field">
+      <span>Business name</span>
+      <input type="text" name="business" autocomplete="organization" required>
+    </label>
+
+    <label class="field">
+      <span>Your name</span>
+      <input type="text" name="name" autocomplete="name" required>
+    </label>
+
+    <label class="field">
+      <span>City</span>
+      <input type="text" name="city" autocomplete="address-level2" required>
+    </label>
+
+    <div class="field">
+      <span>What breaks first?</span>
+      <div class="radios" id="breaks-first-radios">
+        <label><input type="radio" name="breaks_first" value="speed_to_lead"> <span data-ecommerce="Nobody could answer the questions fast enough">Nobody could answer the phone fast enough</span></label>
+        <label><input type="radio" name="breaks_first" value="paperwork"> <span data-ecommerce="Invoices and returns would bury us">Quotes and invoices would bury us</span></label>
+        <label><input type="radio" name="breaks_first" value="follow_up"> <span data-ecommerce="Carts and quotes would go cold">The quotes would go out and die</span></label>
+        <label><input type="radio" name="breaks_first" value="reactivation"> <span data-ecommerce="Past buyers would never hear from us">Old customers would never hear from us</span></label>
+        <label><input type="radio" name="breaks_first" value="reporting"> <span data-ecommerce="I'd have no idea what was selling">I'd have no idea what was happening</span></label>
+        <label><input type="radio" name="breaks_first" value="other"> Something else</label>
+      </div>
+      <input type="hidden" name="audience" id="audience-field" value="local">
+    </div>
+
+    <label class="field">
+      <span>A number I can call or text<small>Required. This is how I'd answer you &mdash; it's the whole point.</small></span>
+      <input type="tel" name="phone" autocomplete="tel" required>
+    </label>
+
+    <label class="field">
+      <span>Email<small>Optional. I'd rather text you.</small></span>
+      <input type="text" name="email" autocomplete="email" inputmode="email">
+    </label>
+
+    <label class="field">
+      <span>One line about it<small>In your words. What's actually going on.</small></span>
+      <textarea name="note" rows="3"></textarea>
+    </label>
+
+    <label class="field" style="position:absolute;left:-9999px" aria-hidden="true" tabindex="-1">
+      <span>Leave this empty</span>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+    </label>
+
+    <input type="hidden" name="source" value="site_start">
+    <p class="frm-fine" id="sms-consent">By sending this, you agree to get a text reply from Bapper Labs at the number you gave. Message frequency varies, message and data rates may apply. Reply STOP to opt out, HELP for help. <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+    <button class="btn" type="submit" id="start-submit">Send it</button>
+    <p class="frm-fine">No newsletter, no drip, no calendar link. It lands on my phone and I answer it.</p>
+    <p class="frm-err" id="start-err" hidden></p>
+  </form>
+
+  <div class="frm-done" id="start-done" hidden>
+    <h4>Got it.</h4>
+    <p>You'll have a reply from me shortly &mdash; check the number you gave me. If nothing comes through in ten minutes, something on my end broke: call or text (616) 227-4477 and I'll fix it.</p>
+  </div>
+
+</div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <div class="brandline"><span>BAPPER</span><span class="slash sm"></span></div>
+  <em>Work that hits.</em>
+  <a href="ai-systems.html">Systems</a><a href="growth.html">Getting found</a><a href="about.html">About</a>
+  <span>(616) 227-4477 &middot; hello@bapperlabs.com &middot; Sparta, MI 49345</span>
+</div></footer>
+
+<script>
+(function () {
+  var form = document.getElementById("start-form");
+  var done = document.getElementById("start-done");
+  var err = document.getElementById("start-err");
+  var btn = document.getElementById("start-submit");
+  if (!form || !done || !btn) { return; }
+
+  /* The homepage remembers which deck the visitor chose; the labels here follow it,
+     so a store owner who picked "carts would go cold" sees those words, not the trades ones. */
+  try {
+    var aud = window.localStorage.getItem("bapper.clogs.audience");
+    if (aud === "ecommerce") {
+      var spans = form.querySelectorAll("#breaks-first-radios span[data-ecommerce]");
+      for (var i = 0; i < spans.length; i++) { spans[i].textContent = spans[i].getAttribute("data-ecommerce"); }
+      var af = document.getElementById("audience-field");
+      if (af) { af.value = "ecommerce"; }
+    }
+  } catch (e) { /* private mode: trades labels stay */ }
+
+  /* Deep link from #breaks-first on the homepage: /start?clog=speed_to_lead */
+  try {
+    var m = /[?&]clog=([a-z_]+)/.exec(window.location.search);
+    if (m) {
+      var radio = form.querySelector('input[name="breaks_first"][value="' + m[1] + '"]');
+      if (radio) { radio.checked = true; }
+    }
+  } catch (e) { /* a bad query string is not a reason to break the form */ }
+
+  /* fetch() submit, with a native POST as the fallback so a lead never evaporates */
+  form.addEventListener("submit", function (ev) {
+    if (!window.fetch || !window.FormData) { return; }
+    ev.preventDefault();
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    var action = form.getAttribute("data-endpoint") || "";
+    var payload = new FormData(form);
+
+    if (!action) {
+      /* No receiver deployed yet: hand the message to the phone's SMS app, or mail on desktop. */
+      var f = function (k) { return (payload.get(k) || "").toString().trim(); };
+      var picked = form.querySelector('input[name="breaks_first"]:checked');
+      var pickedText = picked ? (picked.parentNode.textContent || "").trim() : "";
+      var lines = [
+        "Bapper: " + f("business") + " / " + f("name") + " / " + f("city"),
+        "Breaks first: " + (pickedText || "-"),
+        "Number: " + f("phone"),
+        f("email") ? "Email: " + f("email") : "",
+        f("note") ? "Note: " + f("note") : ""
+      ].filter(Boolean);
+      var body = lines.join("\n");
+      var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      var href = mobile
+        ? "sms:+16162274477?&body=" + encodeURIComponent(body)
+        : "mailto:thinkbankco@gmail.com?subject=" + encodeURIComponent("Bapper start: " + f("business")) + "&body=" + encodeURIComponent(body);
+      window.location.href = href;
+      setTimeout(showDone, 800);
+      return;
+    }
+
+    fetch(action, { method: "POST", body: payload })
+      .then(function () { showDone(); })
+      .catch(function () {
+        /* CORS or offline — hand it back to the browser, which can post it anyway */
+        btn.disabled = false;
+        btn.textContent = "Send it";
+        err.hidden = false;
+        err.textContent = "That didn't go through here. Sending it the long way — or just call (616) 227-4477.";
+        form.submit();
+      });
+  });
+
+  function showDone() {
+    form.hidden = true;
+    done.hidden = false;
+    try { done.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) { /* ignore */ }
+  }
+})();
+</script>
+<script>
+const io_ = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io_.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll(".up").forEach(el => io_.observe(el));
+</script>
+</body>
+</html>
