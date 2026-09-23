@@ -1,0 +1,228 @@
+/* ============================================================================
+   BAPPER V2 — capability pages
+   site/v2-cap.css · phase 2A · loaded AFTER v2.css, never instead of it.
+   Only the components the capabilities index and the five capability pages
+   add on top of the shared design system. Nothing here overrides a shared
+   token, a band, the nav, the stepper mechanics, the accordion or the footer.
+   Mobile first (390px), like v2.css.
+   ========================================================================== */
+
+/* ---- 1. capability hero (the smaller hero of spec 5) --------------------- */
+.hero.hero-cap .hero-inner { padding: 56px 0 48px; }
+.hero.hero-cap .display { font-size: clamp(32px, 7.4vw, 52px); max-width: 17ch; }
+.hero.hero-cap .sub { max-width: 54ch; }
+
+.hero-cap-grid { display: block; }
+
+/* the index rail: where you are among the five, and a route to the others.
+   Desktop only — under 1080px the footer and the drawer carry the same five. */
+.caprail { display: none; }
+
+/* ---- 1b. the two chrome rows moved into v2.css (Council 6, item 9) so the
+   dropdown's "All capabilities" row and the drawer heading are site-wide. -- */
+
+/* ---- 2. the section-index eyebrow moved into v2.css (Council 6 #14) ----- */
+
+/* ---- 3. "01 What's included" — six hairline cells ----------------------- */
+.incl {
+  display: grid; gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 30px;
+}
+.inc { background: var(--card); padding: 22px 18px; position: relative; }
+.inc::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform .24s cubic-bezier(.2,.7,.3,1);
+}
+.inc:hover::after { transform: scaleX(1); }
+.inc .n {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-dimmer);
+}
+.inc h3 { font-size: 18px; margin-top: 11px; }
+.inc p { font-size: 15px; color: var(--ink-dim); margin-top: 8px; line-height: 1.6; }
+
+/* ---- 4. "03 Proof" — a single build card, two columns on desktop -------- */
+.proof { margin-top: 30px; }
+.proof .bcard { display: grid; gap: 20px; }
+.proof .bcard .prob { margin-top: 10px; }
+.proof .bcard ul { margin-top: 0; }
+.proof .bcard .stackline { margin-top: 18px; }
+.proof .bcard .more { margin-top: 18px; }
+
+/* ---- 5. "04 Who it's for" — three scenarios ---------------------------- */
+.scen { display: grid; gap: 22px; margin-top: 30px; }
+.sc { border-top: 1px solid var(--line-2); padding-top: 16px; }
+.sc .n {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-dimmer);
+}
+.sc h3 { font-size: 18px; margin-top: 10px; max-width: 34ch; }
+.sc p { font-size: 15px; color: var(--ink-dim); margin-top: 9px; line-height: 1.6; }
+
+/* ---- 6. drawn figures: additions to the shared .fig component ----------- */
+/* v2.css's `.step p` (0,1,1) outranks `.fig-note` (0,1,0), so a figure caption
+   inside a step inherits the 16px step paragraph instead of the 9.5px mono
+   caption. Restored here for these pages; index.html has the same defect and
+   needs the fix in v2.css, which phase 2A does not own. */
+.step .fig-note { font-size: 9.5px; margin-top: 12px; max-width: none; line-height: 1.6; }
+
+/* a drafted message, in the type of the rest of the figures */
+.fig-msg {
+  border: 1px solid var(--line-band-2);
+  border-radius: 10px 10px 10px 2px;
+  padding: 12px 13px;
+  background: rgba(233,238,250,.045);
+  color: var(--on-band);
+  font-size: 10.5px; line-height: 1.75; letter-spacing: .04em;
+  margin: 2px 0 12px;
+  max-width: 34ch;
+}
+.fig-msg b { font-weight: 400; color: var(--on-band-dim); display: block; margin-top: 6px; }
+/* a scheduled-check strip: marks, not a number */
+.fig-strip { display: flex; gap: 3px; margin: 4px 0 10px; }
+.fig-strip i {
+  display: block; flex: 1 1 auto; height: 18px; border-radius: 2px;
+  background: rgba(233,238,250,.20);
+}
+.fig-strip i.now { background: var(--accent-on-band); }
+
+/* ---- 7. the capabilities index rows ------------------------------------ */
+.crows { border-top: 1px solid var(--line); margin-top: 34px; }
+.crow {
+  display: block; position: relative; color: var(--ink);
+  padding: 26px 18px 28px;
+  border-bottom: 1px solid var(--line);
+  transition: background .2s ease, padding .2s ease;
+}
+.crow::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: var(--accent); transform: scaleY(0); transform-origin: top;
+  transition: transform .22s cubic-bezier(.2,.7,.3,1);
+}
+.crow:hover, .crow:focus-visible { text-decoration: none; background: rgba(11,22,51,.022); padding-left: 24px; }
+.crow:hover::before, .crow:focus-visible::before { transform: scaleY(1); }
+.crow .rbody { display: block; }
+.crow .num {
+  display: block; font-family: var(--mono); font-size: 11px;
+  letter-spacing: .13em; color: var(--ink-dimmer);
+}
+.crow .ttl {
+  display: block; font-size: 22px; font-weight: 700;
+  letter-spacing: -.016em; line-height: 1.2; margin-top: 10px;
+}
+.crow .dsc { display: block; font-size: 16px; color: var(--ink-dim); margin-top: 11px; max-width: 66ch; line-height: 1.6; }
+.crow .tags2 { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+.crow .tags2 span {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-dimmer);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+}
+.crow .go {
+  display: inline-flex; align-items: baseline; gap: 8px; margin-top: 18px;
+  font-size: 15px; font-weight: 500; color: var(--ink);
+}
+.crow .go .arw { color: var(--ink-dimmer); transition: transform .18s ease, color .18s ease; }
+.crow:hover .go { color: var(--accent-ink); }
+.crow:hover .go .arw { transform: translateX(4px); color: var(--accent-ink); }
+
+/* ---- 8. responsive ------------------------------------------------------ */
+@media (min-width: 700px) {
+  .incl { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (min-width: 900px) {
+  .incl { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .inc { padding: 24px 20px; }
+  .scen { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 30px; }
+  .proof .bcard { grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
+  /* the row opens out: index · title and route on the left, the paragraph and
+     its tags on the right, so a wide row is a spread and not a ragged column */
+  .crow { display: grid; grid-template-columns: 104px 1fr; gap: 26px; padding: 34px 20px 36px; }
+  .crow .num { padding-top: 9px; }
+  .crow .rbody {
+    display: grid;
+    grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+    column-gap: 36px; row-gap: 14px; align-items: start;
+  }
+  .crow .ttl   { grid-area: 1 / 1; margin-top: 0; font-size: 24px; }
+  .crow .dsc   { grid-area: 1 / 2; margin-top: 0; max-width: 56ch; }
+  .crow .tags2 { grid-area: 2 / 2; margin-top: 0; }
+  .crow .go    { grid-area: 2 / 1; margin-top: 0; align-self: start; }
+  .hero.hero-cap .hero-inner { padding: 92px 0 80px; }
+}
+@media (min-width: 1080px) {
+  .hero-cap-grid { display: grid; grid-template-columns: 1fr 236px; gap: 56px; align-items: start; }
+  .caprail { display: block; border-left: 1px solid var(--line-band-2); padding-left: 22px; }
+  .caprail .caprail-h {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--on-band-dim);
+  }
+  .caprail ol { list-style: none; margin-top: 12px; }
+  .caprail li { border-top: 1px solid var(--line-band); }
+  .caprail li:first-child { border-top: 0; }
+  .caprail a {
+    display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: baseline;
+    padding: 9px 0; color: var(--on-band-dim); font-size: 13.5px; line-height: 1.4;
+  }
+  .caprail a:hover { color: var(--on-band); text-decoration: none; }
+  .caprail i { font-family: var(--mono); font-style: normal; font-size: 10px; letter-spacing: .12em; }
+  .caprail li[aria-current="page"] a { color: var(--on-band); }
+  .caprail li[aria-current="page"] i { color: var(--on-band); }
+  .caprail li[aria-current="page"] a::after {
+    content: ""; grid-column: 1 / -1; height: 1px; background: var(--on-band-dim); margin-top: 7px;
+  }
+}
+
+/* ---- 8c. the static four-card "How it works" (Council 6 #12) -------------
+   The 3,000px pinned stepper is the home page's signature moment and is not
+   reused here. `.steps-static` keeps v2.js from pinning; the four phases read
+   as four cards, each keeping its own drawn figure. */
+.stepper.steps-static .rail { display: none; }
+.stepper.steps-static .stage { margin-top: 26px; }
+@media (min-width: 900px) {
+  .stepper.steps-static .stage {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px;
+  }
+  .stepper.steps-static .step {
+    background: var(--band-2); border: 1px solid var(--line-band);
+    border-radius: var(--r); padding: 24px 22px 26px; margin: 0;
+  }
+  .stepper.steps-static .step:last-child { border-bottom: 1px solid var(--line-band); }
+  .stepper.steps-static .step p { max-width: none; }
+  .stepper.steps-static .step-fig { margin-top: 20px; }
+}
+
+/* ---- 8b. the pinned stepper on a short desktop window -------------------
+   The capability stepper carries one more element than the home one (the body
+   sentence under the heading), so on a window under ~800px tall the pinned
+   block was taller than the pin and the heading clipped above the fold. The
+   block tightens, and under 700px the body sentence steps out entirely. --- */
+@media (min-width: 900px) and (max-height: 800px) and (prefers-reduced-motion: no-preference) {
+  .stepper.is-pinnable .pinwrap { padding: 16px 0; }
+  .stepper.is-pinnable .eyebrow { margin-bottom: 10px; }
+  .stepper.is-pinnable h2 { font-size: 30px; }
+  .stepper.is-pinnable .sub { font-size: 15px; margin-top: 9px; }
+  .stepper.is-pinnable .rail { margin-top: 22px; }
+  .stepper.is-pinnable .rail button { padding: 12px 16px; }
+  .stepper.is-pinnable .stage { min-height: 344px; }
+  .stepper.is-pinnable .fig { padding: 16px; }
+}
+@media (min-width: 900px) and (max-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .stepper.is-pinnable .sub { display: none; }
+  .stepper.is-pinnable h2 { font-size: 27px; }
+  .stepper.is-pinnable .stage { min-height: 344px; }
+  .stepper.is-pinnable .step p { font-size: 15px; }
+}
+
+/* ---- 9. reduced motion --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .inc::after, .crow::before { transition: none; }
+  .crow:hover, .crow:focus-visible { padding-left: 18px; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 900px) {
+  .crow:hover, .crow:focus-visible { padding-left: 20px; }
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +9,23 @@
 <link rel="icon" href="assets/mark_b.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:title" content="The call you can't take is the job you don't get.">
 <meta property="og:description" content="Every call your shop doesn't pick up gets a text back inside sixty seconds, in your name. Their answer lands on your phone with the address in it.">
 <meta property="og:image" content="https://bapperlabs.com/assets/og_card.png">
 <meta property="og:url" content="https://bapperlabs.com/missed-calls.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="styles.css?v=20260914a">
+<meta name="theme-color" content="#0b1633">
+<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, "js");</script>
+<link rel="stylesheet" href="v2.css?v=20260923c6">
+<link rel="stylesheet" href="v2-pages.css?v=20260923c6">
 </head>
-<body>
+<body class="lp-page">
 
 <!-- Cold-traffic page: no nav, no escape hatches. Brand mark and the phone, nothing else. -->
 <header class="lp-header"><div class="wrap">
-  <img class="lockup" src="assets/lockup_light.png" alt="Bapper">
+  <a class="brand" href="index.html" aria-label="Bapper, home"><img class="lockup" src="assets/wordmark_white_text.png" alt="Bapper" width="120" height="25"></a>
   <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
 </div></header>
 
@@ -73,10 +75,6 @@
   <h2 class="lp-h up">Forty seconds, no sound needed.</h2>
   <p class="up">A call comes in, nobody answers, a text goes back. That's the whole recording.</p>
   <div class="demo up">
-    <video controls preload="none" playsinline
-           poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%230a1128'/%3E%3Ctext x='320' y='172' font-size='24' fill='%239aa6c8' text-anchor='middle'%3E40-SECOND RECORDING%3C/text%3E%3Ctext x='320' y='206' font-size='16' fill='%233d84ff' text-anchor='middle'%3Enot made yet%3C/text%3E%3C/svg%3E">
-      <source src="assets/callback_demo.mp4" type="video/mp4">
-    </video>
     <p class="demo-note">The recording isn't made yet, so it isn't here yet. It goes up the day it exists and not a day before &mdash; I'm not going to fake a video of my own product. Until then, call the number and ask me to walk you through it.</p>
   </div>
 </section>
@@ -99,8 +97,8 @@
       <div class="meta">SPARTA, MI<br>QUOTED FROM THE ASSESSMENT</div>
     </div>
     <table class="wo-rows">
-      <tr><td class="item"><b>Installation</b><span>Live as soon as your number clears carrier registration; we file the day the proposal is signed. One form from you: business name, address, EIN. All wording approved by you before launch.</span></td><td class="price">Fixed quote</td></tr>
-      <tr><td class="item"><b>Service plan</b><span>Month to month. The number, the messaging, changes on request, and a weekly performance summary by text every Friday.</span></td><td class="price">Monthly</td></tr>
+      <tr><td class="item"><b>Installation</b><span>Live as soon as your number clears carrier registration, typically one to three weeks; we file the day the proposal is signed. One form from you: business name, address, EIN. All wording approved by you before launch.</span></td><td class="price">Fixed quote</td></tr>
+      <tr><td class="item"><b>Service plan</b><span>Month to month. The number, the messaging, changes on request, and a performance summary by text every week.</span></td><td class="price">Monthly</td></tr>
     </table>
     <div class="wo-foot">
       <span class="stamp">Performance-verified before final payment</span>
@@ -143,14 +141,11 @@
 </main>
 
 <footer class="lp-foot"><div class="wrap">
-  <p><b>Bapper</b> &mdash; Sparta, MI 49345</p>
+  <p><b>Bapper Labs</b> &middot; Sparta, MI 49345</p>
   <p>(616) 227-4477 &middot; hello@bapperlabs.com</p>
   <p>If I emailed you and you'd rather I quit, text &ldquo;no&rdquo; to (616) 227-4477 and I will &mdash; same day, every channel.</p>
 </div></footer>
 
-<script>
-const io_ = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io_.unobserve(e.target); } }), { threshold: 0.12 });
-document.querySelectorAll(".up").forEach(el => io_.observe(el));
-</script>
+<script src="v2.js?v=20260923c6"></script>
 </body>
 </html>
