@@ -211,7 +211,7 @@ header.site.is-compact .navlinks a:hover, header.site.is-compact .navlinks .navt
   width: 44px; height: 42px; padding: 0 11px; background: none;
   border: 1px solid var(--line-band); border-radius: 8px; cursor: pointer;
 }
-.navtoggle i { display: block; height: 1.5px; background: var(--on-band); transition: transform .2s ease, opacity .2s ease; }
+.navtoggle i { display: block; width: 20px; height: 2px; min-height: 2px; flex: 0 0 2px; align-self: center; border-radius: 1px; background: var(--on-band, #fff); transition: transform .2s ease, opacity .2s ease; }
 header.site.is-compact .navtoggle { border-color: var(--line-2); }
 header.site.is-compact .navtoggle i { background: var(--ink); }
 .navtoggle[aria-expanded="true"] i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
