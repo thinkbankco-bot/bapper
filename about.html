@@ -1,12 +1,11 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About | Bapper &mdash; An Automation Studio in Sparta, Michigan</title>
 <meta name="description" content="Bapper builds and runs small automation systems for owner-run trades and service businesses in West Michigan. Led by Jason Carr in Sparta, Michigan. Fixed scope, performance-verified before final payment.">
 <link rel="canonical" href="https://bapperlabs.com/about.html">
-<link rel="icon" href="assets/mark_b.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,95 +17,71 @@
 <meta property="og:site_name" content="Bapper">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b1633">
-<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, "js");</script>
-<link rel="stylesheet" href="v2.css?v=20260927a">
-<link rel="stylesheet" href="v2-pages.css?v=20260927a">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className='js';</script>
+<link rel="stylesheet" href="site.css?v=20261118a">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tel" viewBox="0 0 20 20"><path d="M4.2 2.8h3l1.4 3.6-1.9 1.3a10 10 0 0 0 5.6 5.6l1.3-1.9 3.6 1.4v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16.8 3.2 11.400 2.700 4.4A1.5 1.5 0 0 1 4.2 2.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="chk" viewBox="0 0 16 16"><path d="m3 8.5 3.2 3.200L13 4.800" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<!-- ======================================================== nav (spec 2) === -->
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Bapper, home">
-      <img class="on-dark" src="assets/lockup_white_2x.png" alt="Bapper" width="143" height="25">
-      <img class="on-light" src="assets/lockup_light_2x.png" alt="Bapper" width="143" height="25">
-    </a>
-
-    <nav class="navlinks" aria-label="Primary">
-      <div class="navmenu">
-        <button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">Capabilities</button>
-        <div class="navpanel">
-          <a href="capabilities/ai-transformation.html"><i>01</i><span><b>AI transformation</b></span></a>
-          <a href="capabilities/development-integrations.html"><i>02</i><span><b>Development &amp; integrations</b></span></a>
-          <a href="capabilities/web-digital.html"><i>03</i><span><b>Web &amp; digital presence</b></span></a>
-          <a href="capabilities/marketing-performance.html"><i>04</i><span><b>Marketing &amp; performance</b></span></a>
-          <a href="capabilities/support-protection.html"><i>05</i><span><b>Support &amp; protection</b></span></a>
-          <a class="navall" href="capabilities.html"><i>&mdash;</i><span><b>All capabilities &rarr;</b></span></a>
-          <div class="navfoot">Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</div>
-        </div>
-      </div>
-      <a href="work.html">Work</a>
-      <a href="lab.html">The Bench</a>
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Bapper Labs, home"><img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26"></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">How it works</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#questions">Questions</a>
       <a href="about.html" aria-current="page">About</a>
     </nav>
-
-    <div class="navcta">
-      <a class="btn ghost" href="tel:+16162274477" aria-label="Call or text (616) 227-4477"><span class="lab-long">Call or text (616) 227-4477</span><span class="lab-short" aria-hidden="true">Call</span></a>
-      <a class="btn start" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <button type="button" class="navtoggle" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
-      <i></i><i></i><i></i>
-    </button>
+    <a class="nav__tel" href="tel:+16162274477">(616) 227-4477</a>
+    <a class="nav__call" href="tel:+16162274477" aria-label="Call or text (616) 227-4477"><svg><use href="#tel"/></svg></a>
+    <a class="btn btn--pri btn--sm" href="start.html">Book a call</a>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><i></i></button>
   </div>
-
-  <div class="navdrawer" id="drawer">
-    <ul>
-      <li class="drawer-h"><span>Capabilities 01 / 05</span></li>
-      <li><a href="capabilities/ai-transformation.html"><i>01</i><span>AI transformation</span></a></li>
-      <li><a href="capabilities/development-integrations.html"><i>02</i><span>Development &amp; integrations</span></a></li>
-      <li><a href="capabilities/web-digital.html"><i>03</i><span>Web &amp; digital presence</span></a></li>
-      <li><a href="capabilities/marketing-performance.html"><i>04</i><span>Marketing &amp; performance</span></a></li>
-      <li><a href="capabilities/support-protection.html"><i>05</i><span>Support &amp; protection</span></a></li>
-      <li><a href="capabilities.html"><i>&mdash;</i><span>All capabilities</span></a></li>
-      <li><a href="work.html"><i>&mdash;</i><span>Work</span></a></li>
-      <li><a href="lab.html"><i>&mdash;</i><span>The Bench</span></a></li>
-      <li><a href="about.html"><i>&mdash;</i><span>About</span></a></li>
-      <li class="drawer-cta">
-        <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-        <a class="btn ghost" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
-      </li>
-    </ul>
-  </div>
+  <nav class="nav__menu" id="navMenu" aria-label="Menu">
+    <a href="index.html#services">Services<svg><use href="#arr"/></svg></a>
+    <a href="index.html#process">How it works<svg><use href="#arr"/></svg></a>
+    <a href="index.html#work">Work<svg><use href="#arr"/></svg></a>
+    <a href="index.html#questions">Questions<svg><use href="#arr"/></svg></a>
+    <a href="about.html" aria-current="page">About<svg><use href="#arr"/></svg></a>
+    <a href="start.html">Book a call<svg><use href="#arr"/></svg></a>
+    <a class="nav__menu-tel" href="tel:+16162274477">Call or text (616) 227-4477</a>
+  </nav>
+  <span class="nav__prog" id="prog" aria-hidden="true"></span>
 </header>
 
 <main>
 
-<!-- ======================================================= hero (dark) ==== -->
-<section class="hero compact">
-  <div class="plane plane-grid" data-rate="0.15" aria-hidden="true"></div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow">About</p>
-    <h1 class="display">A small studio, close to the work.</h1>
-    <p class="sub">Bapper builds and runs small automation systems for owner-run trades and service businesses in West Michigan. Fixed scope, measured before final payment.</p>
-    <div class="cta-row">
-      <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-      <a class="btn ghost" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
+<section class="phero band" id="top">
+  <div class="hero__grid" data-par="0.12" aria-hidden="true"></div>
+  <div class="hero__glow" data-par="0.28" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="phero__copy" data-par="-0.06">
+      <p class="eyebrow" data-r><i>&#9670;</i> About</p>
+      <h1 class="display split">A small studio, close to the work.</h1>
+      <p class="lede" data-r style="--d:520ms">Bapper builds and runs small automation systems for owner-run trades and service businesses in West Michigan. Fixed scope, measured before final payment.</p>
+      <div class="hero__cta" data-r style="--d:640ms">
+      <a class="btn btn--pri" href="start.html">Book a call <svg><use href="#arr"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+16162274477">Call or text (616) 227-4477</a>
     </div>
-    <p class="recur">Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
+      <p class="hero__meta" data-r style="--d:760ms"><span>Fixed-scope installations</span><span>Monthly service plans</span><span>A reply within one business day</span></p>
+    </div>
   </div>
 </section>
 
-<!-- ================================================ the premise (light) === -->
-<section class="band" id="premise">
+<section class="paper pad" id="premise">
   <div class="wrap">
-    <p class="eyebrow up">The premise</p>
-    <div class="premise">
-      <p class="beats up">
-        <span class="beat beat-1">The bottleneck is never the job.</span>
-        <span class="beat">It is the work around the work.</span>
-      </p>
-      <div class="prose up" style="margin-top:0">
+    <p class="eyebrow" data-r><i>01</i> The premise</p>
+    <div class="duo" style="margin-top:22px">
+      <h2 class="statement split"><span class="beat">The bottleneck is never the job.</span> <span class="beat">It is the work around the work.</span></h2>
+      <div class="prose" data-r style="--d:120ms">
         <p>Owners of small service businesses are excellent at the trade and self-taught at everything else. The craft is not what slows them down. What slows them down is the hour of typing after every job, the five subscriptions that do not talk to each other, the phone that rings while the crew is under somebody&rsquo;s furnace, and the quote that went out in March and was never chased. None of it is the work. All of it eats the evenings.</p>
         <p>Bapper exists for that layer. We find the one place the business actually stops, build the system that removes it, and prove it on the owner&rsquo;s own records before the last payment is due. We keep the list of capabilities short and the scope of each engagement fixed, because a small studio can either be broad or be accountable, and we chose accountable.</p>
       </div>
@@ -114,174 +89,143 @@
   </div>
 </section>
 
-<!-- ============================================== beliefs (light 2) ====== -->
-<section class="band paper-2" id="beliefs">
+<section class="paper-2 pad" id="beliefs">
   <div class="wrap">
-    <p class="eyebrow up">Positions</p>
-    <h2 class="up">What we hold to.</h2>
-    <p class="sub up">Five positions that decide how an engagement runs.</p>
-    <ol class="numcards of5 up">
-      <li>
-        <b>Find the bottleneck before building anything.</b>
-        <p>The assessment comes first and it is free, because scoping a build before understanding the week is how a business ends up paying for software it does not need. The one-page summary is the customer&rsquo;s whether or not anything follows.</p>
-      </li>
-      <li>
-        <b>Working software beats a slide.</b>
-        <p>Everything on the <a href="work.html">Work page</a> runs. We would rather show a build that does something narrow and real than a diagram of a system nobody has switched on.</p>
-      </li>
-      <li>
-        <b>It has to land where you already work.</b>
-        <p>Every system we install delivers to a channel already in use: a text to the phone, the inbox already open, the spreadsheet already paid for. No new application, no new login, no new routine for the crew.</p>
-      </li>
-      <li>
-        <b>Write down what &ldquo;working&rdquo; means before starting.</b>
-        <p>Every proposal carries the target the system has to hit and the date it is measured on, read off the customer&rsquo;s own records. That sentence is what makes the final payment arguable on evidence rather than opinion.</p>
-      </li>
-      <li>
-        <b>Sometimes the right answer is no system at all.</b>
-        <p>If a setting in software already being paid for does the job, we say so on the first call and there is no invoice. A small studio can afford to turn work down. It cannot afford to be wrong about fit.</p>
-      </li>
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow" data-r><i>02</i> Positions</p>
+        <h2 class="h2 split" style="margin-top:16px">What we hold to.</h2>
+      </div>
+      <p class="lede" data-r style="--d:120ms">Five positions that decide how an engagement runs.</p>
+    </div>
+    <ol class="cards cards--5">
+      <li class="card" data-r style="--d:0ms"><span class="card__n"><b>01</b><span>/ 05</span></span><h3>Find the bottleneck before building anything.</h3><p>The assessment comes first and it is free, because scoping a build before understanding the week is how a business ends up paying for software it does not need. The one-page summary is the customer&rsquo;s whether or not anything follows.</p></li>
+      <li class="card" data-r style="--d:70ms"><span class="card__n"><b>02</b><span>/ 05</span></span><h3>Working software beats a slide.</h3><p>Everything on the <a href="work.html">Work page</a> runs. We would rather show a build that does something narrow and real than a diagram of a system nobody has switched on.</p></li>
+      <li class="card" data-r style="--d:140ms"><span class="card__n"><b>03</b><span>/ 05</span></span><h3>It has to land where you already work.</h3><p>Every system we install delivers to a channel already in use: a text to the phone, the inbox already open, the spreadsheet already paid for. No new application, no new login, no new routine for the crew.</p></li>
+      <li class="card" data-r style="--d:210ms"><span class="card__n"><b>04</b><span>/ 05</span></span><h3>Write down what &ldquo;working&rdquo; means before starting.</h3><p>Every proposal carries the target the system has to hit and the date it is measured on, read off the customer&rsquo;s own records. That sentence is what makes the final payment arguable on evidence rather than opinion.</p></li>
+      <li class="card" data-r style="--d:280ms"><span class="card__n"><b>05</b><span>/ 05</span></span><h3>Sometimes the right answer is no system at all.</h3><p>If a setting in software already being paid for does the job, we say so on the first call and there is no invoice. A small studio can afford to turn work down. It cannot afford to be wrong about fit.</p></li>
     </ol>
   </div>
 </section>
 
-<!-- ========================================== the engagement model ======== -->
-<section class="band" id="engagement">
+<section class="paper pad" id="engagement">
   <div class="wrap">
-    <p class="eyebrow up">How engagements work</p>
-    <h2 class="up">Assessment, proposal, installation, service plan.</h2>
-    <p class="sub up">Four steps, every time. No retainers, no open-ended hourly work, and no final payment until the system is measured on your own data.</p>
-
-    <div class="model up">
-      <div class="model-head">
-        <div class="who">The engagement model<small>Bapper &middot; Fixed-scope systems for trades and service businesses</small></div>
-        <div class="meta">Four steps<br>Sparta, MI</div>
-      </div>
-      <div class="steps4">
-        <div><i>Step 01</i><b>Assessment</b></div>
-        <div><i>Step 02</i><b>Written proposal</b></div>
-        <div><i>Step 03</i><b>Fixed-scope installation</b></div>
-        <div><i>Step 04</i><b>Monthly service plan</b></div>
-      </div>
-      <ul class="ticks">
-        <li><b>Assessment.</b> Ninety minutes by phone or on site. We review where the hours go, which calls and quotes are being dropped, and how the business appears when a customer searches or asks an assistant. You receive a one-page summary naming the highest-value system to build first. Free, and yours whether or not you proceed.</li>
-        <li><b>Written proposal.</b> Fixed scope, fixed price, the target the system must hit, and the date it will be measured on. One document, no rate card, no hourly estimate.</li>
-        <li><b>Fixed-scope installation.</b> We build it, you approve every message before launch, and the system goes live with a person watching the first week. Half at signature, half at thirty days from go-live, due only if the written target is met on your own call log.</li>
-        <li><b>Monthly service plan.</b> Monitoring, backups, security, changes on request, and a written summary every week. Month to month. No long-term contract.</li>
-      </ul>
-      <p class="stamp">Performance-verified before final payment</p>
-    </div>
-  </div>
-</section>
-
-<!-- =============================================== the founder (dark) ===== -->
-<section class="band dark" id="founder">
-  <div class="wrap">
-    <p class="eyebrow up">Who you will work with</p>
-    <h2 class="up">The founder.</h2>
-
-    <!-- PHOTO SLOT: assets/jason.jpg does not exist yet, so .bio carries the
-         no-photo class and no placeholder image is rendered. When the photo
-         exists, drop "no-photo" below and uncomment the <img>. -->
-    <div class="bio no-photo up">
-      <div class="photowrap">
-        <div class="photoslot">
-          <!-- <img src="assets/jason.jpg" alt="Jason Carr, founder, Bapper, Sparta, Michigan"> -->
-        </div>
-        <p class="photocap">Jason Carr &middot; Founder &middot; Sparta, Michigan</p>
-      </div>
+    <div class="sec-head sec-head--split">
       <div>
-        <blockquote>
-          <b>Bapper is led by Jason Carr, founder, based in Sparta, Michigan.</b> Bapper grew out of automation built for our own operations: document pipelines that read and generate paperwork, telephony that records and files itself, monitoring agents, and reporting tools that ran unattended overnight and left a summary by morning. The same bottlenecks stall a five-truck service company, with more riding on each one.<br><br>
-          We scope, build, and install it ourselves, so nothing is lost in a handoff. The number on this page reaches us. It also means a direct answer on fit: if a problem is too large for us, or solvable with a setting in software you already own, we say so on the first call rather than three weeks into a proposal.<br><br>
-          We do not employ salespeople. Every engagement starts with a free assessment and a one-page summary. Sometimes the honest recommendation is to change nothing, and we say so.
-        </blockquote>
-        <p class="sig">&mdash; Jason Carr &middot; Founder, Bapper &middot; Sparta, MI</p>
+        <p class="eyebrow" data-r><i>03</i> How engagements work</p>
+        <h2 class="h2 h2--wide split" style="margin-top:16px">Assessment, proposal, installation, service plan.</h2>
+      </div>
+      <p class="lede" data-r style="--d:120ms">Four steps, every time. No retainers, no open-ended hourly work, and no final payment until the system is measured on your own data.</p>
+    </div>
+    <div class="panel" data-r>
+      <div class="panel__head">
+        <div><b>The engagement model</b><small>Bapper &middot; Fixed-scope systems for trades and service businesses</small></div>
+        <p class="panel__meta">Four steps<br>Sparta, MI</p>
+      </div>
+      <p class="pipe pipe--light" aria-hidden="true"><span style="--t:0s">Assessment</span><i></i><span style="--t:1.2s">Written proposal</span><i></i><span style="--t:2.4s">Fixed-scope installation</span><i></i><span style="--t:3.6s">Monthly service plan</span></p>
+      <ul class="checks">
+        <li><svg><use href="#chk"/></svg><span><b>Assessment.</b> Ninety minutes by phone or on site. We review where the hours go, which calls and quotes are being dropped, and how the business appears when a customer searches or asks an assistant. You receive a one-page summary naming the highest-value system to build first. Free, and yours whether or not you proceed.</span></li>
+        <li><svg><use href="#chk"/></svg><span><b>Written proposal.</b> Fixed scope, fixed price, the target the system must hit, and the date it will be measured on. One document, no rate card, no hourly estimate.</span></li>
+        <li><svg><use href="#chk"/></svg><span><b>Fixed-scope installation.</b> We build it, you approve every message before launch, and the system goes live with a person watching the first week. Half at signature, half at thirty days from go-live, due only if the written target is met on your own call log.</span></li>
+        <li><svg><use href="#chk"/></svg><span><b>Monthly service plan.</b> Monitoring, backups, security, changes on request, and a written summary every week. Month to month. No long-term contract.</span></li>
+      </ul>
+      <div class="panel__foot"><span class="stamp">Performance-verified before final payment</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band pad" id="founder">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>04</i> Who you will work with</p>
+        <h2 class="h2 split" style="margin-top:16px">The founder.</h2>
+      </div>
+    </div>
+    <div class="founder" data-r>
+      <figure class="founder__photo">
+        <div class="founder__frame">
+          <!-- headshot: assets/jason.jpg
+               When the photo exists, replace the monogram <img> below with:
+               <img class="founder__img" src="assets/jason.jpg" alt="Jason Carr, founder, Bapper Labs, Sparta, Michigan" width="600" height="750"> -->
+          <img class="founder__mono" src="assets/mark_b.png" alt="" width="92" height="92">
+        </div>
+        <figcaption>Jason Carr &middot; Founder &middot; Sparta, Michigan</figcaption>
+      </figure>
+      <div class="founder__body">
+        <p><b>Bapper is led by Jason Carr, founder, based in Sparta, Michigan.</b> Bapper grew out of automation built for our own operations: document pipelines that read and generate paperwork, telephony that records and files itself, monitoring agents, and reporting tools that ran unattended overnight and left a summary by morning. The same bottlenecks stall a five-truck service company, with more riding on each one.</p>
+        <p>We scope, build, and install it ourselves, so nothing is lost in a handoff. The number on this page reaches us. It also means a direct answer on fit: if a problem is too large for us, or solvable with a setting in software you already own, we say so on the first call rather than three weeks into a proposal.</p>
+        <p>We do not employ salespeople. Every engagement starts with a free assessment and a one-page summary. Sometimes the honest recommendation is to change nothing, and we say so.</p>
+        <p class="founder__sig">&mdash; Jason Carr &middot; Founder, Bapper &middot; Sparta, MI</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================================================== place (light) ==== -->
-<section class="band" id="place">
+<section class="paper pad" id="place">
   <div class="wrap">
-    <p class="eyebrow up">Where we are</p>
-    <h2 class="up">Sparta, Michigan.</h2>
-    <div class="prose up">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>05</i> Where we are</p>
+        <h2 class="h2 split" style="margin-top:16px">Sparta, Michigan.</h2>
+      </div>
+    </div>
+    <div class="prose" data-r>
       <p>The studio is in Sparta, north of Grand Rapids. We serve West Michigan: Kent, Ottawa, Muskegon, Montcalm, and Newaygo counties, and the towns between them. Meeting in person before an engagement begins is standard practice, and for installations on site it is not optional.</p>
       <p>Work outside the area is possible when the system is fully remote, but we will say plainly that a business two hours away is better served by someone who can be in the shop by lunch.</p>
     </div>
-    <div class="tags on-paper placetags up">
-      <span>Sparta, MI 49345</span><span>West Michigan</span><span>In person before we start</span>
-    </div>
+    <p class="tags" data-r style="margin-top:24px"><span>Sparta, MI 49345</span><span>West Michigan</span><span>In person before we start</span></p>
   </div>
 </section>
 
-<!-- ============================================== CTA band (dark) ========= -->
-<section class="band dark ctaband">
+<section class="cta band pad" id="start" aria-labelledby="cta-h">
+  <img class="cta__mark" src="assets/monogram_white.png" alt="" width="141" height="123" loading="lazy">
+  <div class="cta__rings" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <p class="eyebrow">Start here</p>
-    <h2 class="display">Start with the assessment.</h2>
-    <p class="sub">Ninety minutes by phone or on site. One page naming the highest-value system to build first, and the written target it would be measured against. The summary is yours either way.</p>
-    <div class="cta-row">
-      <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-      <a class="btn ghost" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
+    <p class="eyebrow" data-r><i>06</i> Start here</p>
+    <h2 class="split" id="cta-h">Start with the assessment.</h2>
+    <p class="lede" data-r style="--d:120ms">Ninety minutes by phone or on site. One page naming the highest-value system to build first, and the written target it would be measured against. The summary is yours either way.</p>
+    <div class="cta__btns" data-r style="--d:200ms">
+      <a class="btn btn--pri" href="start.html">Book a call <svg><use href="#arr"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+16162274477"><svg><use href="#tel"/></svg> Call or text (616) 227-4477</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ==================================================== footer (spec 2) === -->
-<footer class="site">
-  <div class="wrap">
-    <img class="foot-mark" src="assets/lockup_white_2x.png" alt="Bapper" width="121" height="21">
-    <div class="foot-cols">
-      <div class="foot-col">
-        <h5>Capabilities</h5>
-        <ul>
-          <li><a href="capabilities/ai-transformation.html">AI transformation</a></li>
-          <li><a href="capabilities/development-integrations.html">Development &amp; integrations</a></li>
-          <li><a href="capabilities/web-digital.html">Web &amp; digital presence</a></li>
-          <li><a href="capabilities/marketing-performance.html">Marketing &amp; performance</a></li>
-          <li><a href="capabilities/support-protection.html">Support &amp; protection</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="lab.html">The Bench</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="start.html">Start a project</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="tel:+16162274477">(616) 227-4477</a></li>
-          <li><a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></li>
-          <li class="dimline">Call or text. Miss us and you can press 1 for a text back.</li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Sparta, MI</h5>
-        <ul>
-          <li class="dimline">Sparta, Michigan 49345</li>
-          <li class="dimline">Serving West Michigan</li>
-          <li><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></li>
-          <li><a href="sms-consent.html">SMS consent</a></li>
-        </ul>
-      </div>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26" loading="lazy">
+      <p style="margin-top:14px">Sparta, Michigan 49345 &middot; Serving West Michigan</p>
+      <p>Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
+      <p><a href="tel:+16162274477">(616) 227-4477</a> &middot; <a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></p>
+      <p>Call or text. Miss us and you can press 1 for a text back.</p>
     </div>
-    <div class="foot-bottom">
-      <p class="recur">Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
-      <small>&copy; 2026 Bapper Labs &middot; Sparta, MI</small>
+    <div class="foot__navs">
+      <nav aria-label="Footer">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">How it works</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#questions">Questions</a>
+        <a href="about.html">About</a>
+        <a href="start.html">Book a call</a>
+      </nav>
+      <nav class="foot__more" aria-label="More pages">
+        <a href="capabilities.html">Capabilities</a>
+        <a href="work.html">All builds</a>
+        <a href="lab.html">The Bench</a>
+        <a href="missed-calls.html">Missed-call text-back</a>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Bapper Labs &middot; Sparta, MI</span>
+      <span><a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="sms-consent.html">SMS consent</a></span>
     </div>
   </div>
 </footer>
 
-<script src="v2.js?v=20260927a"></script>
-<script src="v2-pages.js?v=20260927a"></script>
+<script src="site.js?v=20261118a"></script>
 </body>
 </html>

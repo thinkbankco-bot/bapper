@@ -1,151 +1,277 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The 60-second text-back — Bapper</title>
-<meta name="description" content="A call nobody gets to sends a text back in under a minute, in your shop's name, asking what broke and where. Their answer lands on your phone with the address in it. Sparta, Michigan.">
+<title>The press-1 text-back — Bapper</title>
+<meta name="description" content="Miss a call? The caller presses 1 and gets a text right back, in your shop's name, asking what broke and where. Their answer lands on your phone with the address in it. Sparta, Michigan.">
 <link rel="canonical" href="https://bapperlabs.com/missed-calls.html">
-<link rel="icon" href="assets/mark_b.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:title" content="The call you can't take is the job you don't get.">
-<meta property="og:description" content="Every call your shop doesn't pick up gets a text back inside sixty seconds, in your name. Their answer lands on your phone with the address in it.">
+<meta property="og:description" content="When your shop can't pick up, the caller presses 1 and gets a text right back, in your name. Their answer lands on your phone with the address in it.">
 <meta property="og:image" content="https://bapperlabs.com/assets/og_card.png">
 <meta property="og:url" content="https://bapperlabs.com/missed-calls.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b1633">
-<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, "js");</script>
-<link rel="stylesheet" href="v2.css?v=20260927a">
-<link rel="stylesheet" href="v2-pages.css?v=20260927a">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className='js';</script>
+<link rel="stylesheet" href="site.css?v=20261118a">
 </head>
-<body class="lp-page">
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tel" viewBox="0 0 20 20"><path d="M4.2 2.8h3l1.4 3.6-1.9 1.3a10 10 0 0 0 5.6 5.6l1.3-1.9 3.6 1.4v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16.8 3.2 11.400 2.700 4.4A1.5 1.5 0 0 1 4.2 2.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="chk" viewBox="0 0 16 16"><path d="m3 8.5 3.2 3.200L13 4.800" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<!-- Cold-traffic page: no nav, no escape hatches. Brand mark and the phone, nothing else. -->
-<header class="lp-header"><div class="wrap">
-  <a class="brand" href="index.html" aria-label="Bapper, home"><img class="lockup" src="assets/lockup_white_2x.png" alt="Bapper" width="143" height="25"></a>
-  <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-</div></header>
-
-<main class="wrap lp">
-
-<div style="padding:56px 0 8px">
-  <div class="kicker"><span class="slash sm"></span>SPARTA, MICHIGAN</div>
-  <h1>The call you can't take is the job you don't get.</h1>
-  <p class="lp-sub">Every call your shop doesn't pick up gets a text back inside sixty seconds, in your name, asking what broke and where. Their answer lands on your phone with the address already in it.</p>
-  <p class="lp-seg">Written for one-to-four-truck shops &mdash; two to ten people, where the owner is still near the phone. If you're running ten trucks and a dispatcher, the thing we'd fix at your shop is a different thing, and we'd rather tell you that than sell you this.</p>
-  <div class="cta-row">
-    <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-    <a class="btn ghost" href="start.html">Or send it in writing &rarr;</a>
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Bapper Labs, home"><img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26"></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">How it works</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#questions">Questions</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="nav__tel" href="tel:+16162274477">(616) 227-4477</a>
+    <a class="nav__call" href="tel:+16162274477" aria-label="Call or text (616) 227-4477"><svg><use href="#tel"/></svg></a>
+    <a class="btn btn--pri btn--sm" href="start.html">Book a call</a>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><i></i></button>
   </div>
-  <p class="cta-note">That's a cell, not an office. If nobody picks up, press 1 and you'll get a text back right away &mdash; that's the thing we sell.</p>
-</div>
+  <nav class="nav__menu" id="navMenu" aria-label="Menu">
+    <a href="index.html#services">Services<svg><use href="#arr"/></svg></a>
+    <a href="index.html#process">How it works<svg><use href="#arr"/></svg></a>
+    <a href="index.html#work">Work<svg><use href="#arr"/></svg></a>
+    <a href="index.html#questions">Questions<svg><use href="#arr"/></svg></a>
+    <a href="about.html">About<svg><use href="#arr"/></svg></a>
+    <a href="start.html">Book a call<svg><use href="#arr"/></svg></a>
+    <a class="nav__menu-tel" href="tel:+16162274477">Call or text (616) 227-4477</a>
+  </nav>
+  <span class="nav__prog" id="prog" aria-hidden="true"></span>
+</header>
 
-<section>
-  <h2 class="lp-h up">The same Tuesday, twice.</h2>
-  <div class="tuesdays">
-    <div class="tuesday now up">
-      <h4>Tuesday, the way it goes now</h4>
-      <ol>
-        <li><b>2:14pm</b><span>Her furnace quits. She finds you and calls. You're under a crawlspace in Kent City.</span></li>
-        <li><b>2:14pm</b><span>Four rings. Voicemail. She doesn't leave one.</span></li>
-        <li><b>2:15pm</b><span>She calls the next name on the list.</span></li>
-        <li><b>4:50pm</b><span>You come out, see the missed call, and call back.</span></li>
-        <li><b>4:52pm</b><span>Somebody else's truck is already in her driveway.</span></li>
-      </ol>
-      <p class="out">You never knew that job existed.</p>
+<main>
+
+<section class="phero band" id="top">
+  <div class="hero__grid" data-par="0.12" aria-hidden="true"></div>
+  <div class="hero__glow" data-par="0.28" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="phero__copy" data-par="-0.06">
+      <p class="eyebrow" data-r><i>&#9670;</i> Sparta, Michigan</p>
+      <h1 class="display split">The call you can't take is the job you don't get.</h1>
+      <p class="lede" data-r style="--d:520ms">When your shop can't pick up, the caller hears a short greeting, presses 1, and gets a text right back, in your name, asking what broke and where. Their answer lands on your phone with the address already in it.</p>
+      <p class="phero__seg" data-r style="--d:580ms">Written for one-to-four-truck shops &mdash; two to ten people, where the owner is still near the phone. If you're running ten trucks and a dispatcher, the thing we'd fix at your shop is a different thing, and we'd rather tell you that than sell you this.</p>
+      <div class="hero__cta" data-r style="--d:640ms">
+      <a class="btn btn--pri" href="start.html">Book a call <svg><use href="#arr"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+16162274477">Call or text (616) 227-4477</a>
     </div>
-    <div class="tuesday after up">
-      <h4>Tuesday, with this installed</h4>
-      <ol>
-        <li><b>2:14pm</b><span>Same call, same crawlspace. Four rings, nobody picks up.</span></li>
-        <li><b>2:15pm</b><span>She gets a text in your shop's name: sorry we missed you &mdash; what's going on, and what's the address?</span></li>
-        <li><b>2:16pm</b><span>She types &ldquo;furnace won't kick on&rdquo; and her street.</span></li>
-        <li><b>2:16pm</b><span>That lands on your phone as a normal text, address included.</span></li>
-        <li><b>4:50pm</b><span>You come out already knowing who to call first.</span></li>
-      </ol>
-      <p class="out">Same crawlspace. Same phone. Different Tuesday.</p>
+      <p class="note" data-r style="--d:820ms">That's a cell, not an office. If nobody picks up, press 1 and you'll get a text back right away &mdash; that's the thing we sell.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2 class="lp-h up">Forty seconds, no sound needed.</h2>
-  <p class="up">A call comes in, nobody answers, a text goes back. That's the whole recording.</p>
-  <div class="demo up">
-    <p class="demo-note">The recording isn't made yet, so it isn't here yet. It goes up the day it exists and not a day before &mdash; we're not going to fake a video of our own product. Until then, call the number and ask us to walk you through it.</p>
-  </div>
-</section>
-
-<section>
-  <h2 class="lp-h up">Four moving parts. That's the whole thing.</h2>
-  <div class="parts">
-    <div class="part up"><div class="k">01 &middot; A NUMBER</div><p>Your existing line forwards, or a new one rings your phones. Nothing about how you answer changes.</p></div>
-    <div class="part up"><div class="k">02 &middot; A TIMER</div><p>Twenty seconds of ringing with nobody picking up and it fires. If somebody answers, nothing happens at all.</p></div>
-    <div class="part up"><div class="k">03 &middot; ONE TEXT</div><p>In your shop's name, asking what broke and where. You write the wording. We just install it.</p></div>
-    <div class="part up"><div class="k">04 &middot; YOUR PHONE</div><p>Their answer arrives as a normal text with the address in it. No app, no login, no new habit for the crew.</p></div>
-  </div>
-</section>
-
-<section>
-  <h2 class="lp-h up">How the engagement works.</h2>
-  <div class="workorder up">
-    <div class="wo-head">
-      <div class="who">The 60-second text-back<small>BAPPER &middot; Fixed-scope installation with a monthly service plan</small></div>
-      <div class="meta">SPARTA, MI<br>QUOTED FROM THE ASSESSMENT</div>
+<section class="paper pad" id="tuesday">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>01</i> What changes</p>
+        <h2 class="h2 split" style="margin-top:16px">The same Tuesday, twice.</h2>
+      </div>
     </div>
-    <table class="wo-rows">
-      <tr><td class="item"><b>Installation</b><span>Live as soon as your number clears carrier registration, typically one to three weeks; we file the day the proposal is signed. One form from you: business name, address, EIN. All wording approved by you before launch.</span></td><td class="price">Fixed quote</td></tr>
-      <tr><td class="item"><b>Service plan</b><span>Month to month. The number, the messaging, changes on request, and a performance summary by text every week.</span></td><td class="price">Monthly</td></tr>
-    </table>
-    <div class="wo-foot">
-      <span class="stamp">Performance-verified before final payment</span>
-      <span class="fine">Half at signature, half at thirty days from go-live, and only if the system meets the written target. The line is registered to your business, every message carries your business name and a STOP option, you approve every template before launch, and you can shut the system off from your phone in seconds.</span>
-    </div>
-  </div>
-  <div class="criterion up">
-    <div class="k">How you know it worked</div>
-    <p>For thirty days, every call you don't pick up gets a text back inside sixty seconds &mdash; measured on your own call log, not on anything we hand you. Miss it and you owe nothing further and we shut it off.</p>
-  </div>
-</section>
-
-<section>
-  <h2 class="lp-h up">The questions everybody asks.</h2>
-  <div class="faq up">
-    <details><summary>Why not just turn this on in the software I already pay for?</summary><p>If ServiceTitan, Housecall Pro, FieldEdge or Jobber already does this, it's switched on, and it's working &mdash; don't buy anything from us. We'll tell you that on the call and it costs you nothing; we'll spend ten minutes turning it on right and leave. Usually one of three things is true instead: it's in a tier you don't have, it fires one canned line that reads like a robot wrote it, or nobody ever turned it on. Ten minutes and we'll tell you which one you've got.</p></details>
-    <details><summary>I already pay an answering service. Isn't this the same thing?</summary><p>No, and it's not a replacement for one. An answering service takes a message from the people who wait on hold. This catches the ones who don't: the call gets a text back inside a minute, in your name, asking what broke and where &mdash; and the answer comes to your phone with the address already in it. It also chases your quotes, which no answering service does. If you've got a service and it's working, keep it. This sits in front of it.</p></details>
-    <details><summary>Whose number is it, and who's on the hook?</summary><p>Your number and your business, registered in your name and portable to your own account whenever you want it. Every message carries your shop's name and STOP to opt out, because it is your shop. You approve every line of wording before anything sends, you can read everything that was sent any time you want, and you can shut the whole thing off from your phone in ten seconds &mdash; or one text to us and we do it.</p></details>
-  </div>
-</section>
-
-<section>
-  <h2 class="lp-h up">Who you'd be dealing with.</h2>
-  <div class="whois no-photo up">
-    <!-- PHOTO SLOT (P0-10): when Jason's phone photo exists, save it to assets/jason.jpg, drop the
-         "no-photo" class above, and add before the text block:
-         <div class="avatar"><img src="assets/jason.jpg" alt="Jason, Bapper, Sparta MI"></div> -->
-    <div>
-      <p>Bapper is led by Jason Carr, founder, based in Sparta, twelve miles up US-131 from most of the businesses we serve. We scope, build, and install it ourselves.</p>
-      <p>Case studies are published as each installation completes its thirty-day verification, reported from the client&rsquo;s own call log.</p>
-      <p><b style="color:var(--white)">(616) 227-4477</b> reaches us. If we miss your call, press 1 for a text back right away, from the system we install.</p>
+    <div class="duo">
+      <div class="day" data-r="l">
+        <p class="day__cap">Tuesday, the way it goes now</p>
+        <ol>
+          <li><time>2:14pm</time><span>Her furnace quits. She finds you and calls. You're under a crawlspace in Kent City.</span></li>
+          <li><time>2:14pm</time><span>Four rings. Voicemail. She doesn't leave one.</span></li>
+          <li><time>2:15pm</time><span>She calls the next name on the list.</span></li>
+          <li><time>4:50pm</time><span>You come out, see the missed call, and call back.</span></li>
+          <li><time>4:52pm</time><span>Somebody else's truck is already in her driveway.</span></li>
+          <li><time></time><span>You never knew that job existed.</span></li>
+        </ol>
+      </div>
+      <div class="day is-with" data-r="r" style="--d:120ms">
+        <p class="day__cap">Tuesday, with this installed</p>
+        <ol>
+          <li><time>2:14pm</time><span>Same call, same crawlspace. Four rings, nobody picks up. Your greeting offers a text back, and she presses 1.</span></li>
+          <li><time>2:15pm</time><span>She gets a text in your shop's name: sorry we missed you &mdash; what's going on, and what's the address?</span></li>
+          <li><time>2:16pm</time><span>She types &ldquo;furnace won't kick on&rdquo; and her street.</span></li>
+          <li><time>2:16pm</time><span>That lands on your phone as a normal text, address included.</span></li>
+          <li><time>4:50pm</time><span>You come out already knowing who to call first.</span></li>
+          <li><time></time><span>Same crawlspace. Same phone. Different Tuesday.</span></li>
+        </ol>
+      </div>
     </div>
   </div>
-  <div class="cta-row up">
-    <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-    <a class="btn ghost" href="start.html">Or send it in writing &rarr;</a>
+</section>
+
+<section class="paper-2 pad" id="recording">
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow" data-r><i>02</i> The recording</p>
+        <h2 class="h2 split" style="margin-top:16px">Forty seconds, no sound needed.</h2>
+      </div>
+      <p class="lede" data-r style="--d:120ms">A call comes in, nobody answers, the caller presses 1, a text goes back. That&rsquo;s the whole recording.</p>
+    </div>
+    <div class="placeholder" data-r>
+      <p>The recording isn't made yet, so it isn't here yet. It goes up the day it exists and not a day before &mdash; we're not going to fake a video of our own product. Until then, call the number and ask us to walk you through it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="paper pad" id="parts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>03</i> What gets installed</p>
+        <h2 class="h2 h2--wide split" style="margin-top:16px">Four moving parts. That&rsquo;s the whole thing.</h2>
+      </div>
+    </div>
+    <div class="cards cards--4">
+      <article class="card" data-r style="--d:0ms"><span class="card__n"><b>01</b><span>/ 04</span></span><h3>A number</h3><p>Your existing line forwards, or a new one rings your phones. Nothing about how you answer changes.</p></article>
+      <article class="card" data-r style="--d:70ms"><span class="card__n"><b>02</b><span>/ 04</span></span><h3>A greeting</h3><p>Twenty seconds of ringing with nobody picking up and the caller hears a short greeting: press 1 for a text back. If somebody answers, nothing happens at all.</p></article>
+      <article class="card" data-r style="--d:140ms"><span class="card__n"><b>03</b><span>/ 04</span></span><h3>One text</h3><p>Sent the moment the caller presses 1, in your shop's name, asking what broke and where. You write the wording. We just install it.</p></article>
+      <article class="card" data-r style="--d:210ms"><span class="card__n"><b>04</b><span>/ 04</span></span><h3>Your phone</h3><p>Their answer arrives as a normal text with the address in it. No app, no login, no new habit for the crew.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="paper-2 pad" id="engagement">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>04</i> The engagement</p>
+        <h2 class="h2 split" style="margin-top:16px">How the engagement works.</h2>
+      </div>
+    </div>
+    <div class="panel" data-r>
+      <div class="panel__head">
+        <div><b>The press-1 text-back</b><small>BAPPER &middot; Fixed-scope installation with a monthly service plan</small></div>
+        <p class="panel__meta">SPARTA, MI<br>QUOTED FROM THE ASSESSMENT</p>
+      </div>
+      <div class="rows">
+        <div><b>Installation</b><p>Live as soon as your number clears carrier registration, typically one to three weeks; we file the day the proposal is signed. One form from you: business name, address, EIN. All wording approved by you before launch.</p><em>Fixed quote</em></div>
+        <div><b>Service plan</b><p>Month to month. The number, the messaging, changes on request, and a performance summary by text every week.</p><em>Monthly</em></div>
+      </div>
+      <div class="panel__foot">
+        <span class="stamp">Performance-verified before final payment</span>
+        <p>Half at signature, half at thirty days from go-live, and only if the system meets the written target. The line is registered to your business, every message carries your business name and a STOP option, you approve every template before launch, and you can shut the system off from your phone in seconds.</p>
+      </div>
+    </div>
+    <div class="callout" data-r>
+      <p class="mono">How you know it worked</p>
+      <p>For thirty days, every caller who presses 1 after a call you don't pick up gets a text right back &mdash; measured on your own call log, not on anything we hand you. Miss it and you owe nothing further and we shut it off.</p>
+    </div>
+  </div>
+</section>
+
+<section class="paper pad" id="questions">
+  <div class="wrap faq__grid">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>05</i> Questions</p>
+        <h2 class="h2 split" style="margin-top:16px">The questions everybody asks.</h2>
+      </div>
+    </div>
+    <div class="faq" id="faq-list">
+      <details data-r open>
+        <summary>Why not just turn this on in the software I already pay for?<i></i></summary>
+        <p class="faq__a">If ServiceTitan, Housecall Pro, FieldEdge or Jobber already does this, it's switched on, and it's working &mdash; don't buy anything from us. We'll tell you that on the call and it costs you nothing; we'll spend ten minutes turning it on right and leave. Usually one of three things is true instead: it's in a tier you don't have, it fires one canned line that reads like a robot wrote it, or nobody ever turned it on. Ten minutes and we'll tell you which one you've got.</p>
+      </details>
+      <details data-r>
+        <summary>I already pay an answering service. Isn't this the same thing?<i></i></summary>
+        <p class="faq__a">No, and it's not a replacement for one. An answering service takes a message from the people who wait on hold. This catches the ones who don't: the caller presses 1 and gets a text right back, in your name, asking what broke and where &mdash; and the answer comes to your phone with the address already in it. It also chases your quotes, which no answering service does. If you've got a service and it's working, keep it. This sits in front of it.</p>
+      </details>
+      <details data-r>
+        <summary>Whose number is it, and who's on the hook?<i></i></summary>
+        <p class="faq__a">Your number and your business, registered in your name and portable to your own account whenever you want it. Every message carries your shop's name and STOP to opt out, because it is your shop. You approve every line of wording before anything sends, you can read everything that was sent any time you want, and you can shut the whole thing off from your phone in ten seconds &mdash; or one text to us and we do it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="paper-2 pad" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow" data-r><i>06</i> The studio</p>
+        <h2 class="h2 split" style="margin-top:16px">Who you&rsquo;d be dealing with.</h2>
+      </div>
+    </div>
+    <div class="founder founder--light founder--small" data-r>
+      <figure class="founder__photo">
+        <div class="founder__frame">
+          <!-- headshot: assets/jason.jpg
+               When the photo exists, replace the monogram <img> below with:
+               <img class="founder__img" src="assets/jason.jpg" alt="Jason Carr, founder, Bapper Labs, Sparta, Michigan" width="600" height="750"> -->
+          <img class="founder__mono" src="assets/mark_b.png" alt="" width="92" height="92">
+        </div>
+      </figure>
+      <div class="founder__body">
+        <p>Bapper is led by Jason Carr, founder, based in Sparta, twelve miles up US-131 from most of the businesses we serve. We scope, build, and install it ourselves.</p>
+        <p>Case studies are published as each installation completes its thirty-day verification, reported from the client&rsquo;s own call log.</p>
+        <p><b>(616) 227-4477</b> reaches us. If we miss your call, press 1 for a text back right away, from the system we install.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta band pad" id="start" aria-labelledby="cta-h">
+  <img class="cta__mark" src="assets/monogram_white.png" alt="" width="141" height="123" loading="lazy">
+  <div class="cta__rings" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <p class="eyebrow" data-r><i>07</i> Start here</p>
+    <h2 class="split" id="cta-h">Start with the assessment.</h2>
+    <p class="lede" data-r style="--d:120ms">Ninety minutes by phone or on site. One page naming the highest-value system to build first, and the written target it would be measured against. The summary is yours either way.</p>
+    <div class="cta__btns" data-r style="--d:200ms">
+      <a class="btn btn--pri" href="start.html">Book a call <svg><use href="#arr"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+16162274477"><svg><use href="#tel"/></svg> Call or text (616) 227-4477</a>
+    </div>
+    <p class="note" data-r style="position:relative;margin-top:34px">If we emailed you and you&rsquo;d rather we stopped, text &ldquo;no&rdquo; to (616) 227-4477 and we will, on every channel.</p>
   </div>
 </section>
 
 </main>
 
-<footer class="lp-foot"><div class="wrap">
-  <p><b>Bapper Labs</b> &middot; Sparta, MI 49345</p>
-  <p>(616) 227-4477 &middot; hello@bapperlabs.com</p>
-  <p>If we emailed you and you&rsquo;d rather we stopped, text &ldquo;no&rdquo; to (616) 227-4477 and we will, on every channel.</p>
-</div></footer>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26" loading="lazy">
+      <p style="margin-top:14px">Sparta, Michigan 49345 &middot; Serving West Michigan</p>
+      <p>Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
+      <p><a href="tel:+16162274477">(616) 227-4477</a> &middot; <a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></p>
+      <p>Call or text. Miss us and you can press 1 for a text back.</p>
+    </div>
+    <div class="foot__navs">
+      <nav aria-label="Footer">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">How it works</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#questions">Questions</a>
+        <a href="about.html">About</a>
+        <a href="start.html">Book a call</a>
+      </nav>
+      <nav class="foot__more" aria-label="More pages">
+        <a href="capabilities.html">Capabilities</a>
+        <a href="work.html">All builds</a>
+        <a href="lab.html">The Bench</a>
+        <a href="missed-calls.html">Missed-call text-back</a>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Bapper Labs &middot; Sparta, MI</span>
+      <span><a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="sms-consent.html">SMS consent</a></span>
+    </div>
+  </div>
+</footer>
 
-<script src="v2.js?v=20260927a"></script>
+<script src="site.js?v=20261118a"></script>
 </body>
 </html>

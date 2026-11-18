@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,74 +13,63 @@
 <meta property="og:url" content="https://bapperlabs.com/privacy.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/mark_b.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#0b1633">
-<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, "js");</script>
-<link rel="stylesheet" href="v2.css?v=20260927a">
-<link rel="stylesheet" href="v2-pages.css?v=20260927a">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>document.documentElement.className='js';</script>
+<link rel="stylesheet" href="site.css?v=20261118a">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tel" viewBox="0 0 20 20"><path d="M4.2 2.8h3l1.4 3.6-1.9 1.3a10 10 0 0 0 5.6 5.6l1.3-1.9 3.6 1.4v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16.8 3.2 11.400 2.700 4.4A1.5 1.5 0 0 1 4.2 2.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="chk" viewBox="0 0 16 16"><path d="m3 8.5 3.2 3.200L13 4.800" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<!-- ======================================================== nav (spec 2) === -->
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Bapper, home">
-      <img class="on-dark" src="assets/lockup_white_2x.png" alt="Bapper" width="143" height="25">
-      <img class="on-light" src="assets/lockup_light_2x.png" alt="Bapper" width="143" height="25">
-    </a>
-
-    <nav class="navlinks" aria-label="Primary">
-      <div class="navmenu">
-        <button type="button" class="navtop" aria-expanded="false" aria-haspopup="true">Capabilities</button>
-        <div class="navpanel">
-          <a href="capabilities/ai-transformation.html"><i>01</i><span><b>AI transformation</b></span></a>
-          <a href="capabilities/development-integrations.html"><i>02</i><span><b>Development &amp; integrations</b></span></a>
-          <a href="capabilities/web-digital.html"><i>03</i><span><b>Web &amp; digital presence</b></span></a>
-          <a href="capabilities/marketing-performance.html"><i>04</i><span><b>Marketing &amp; performance</b></span></a>
-          <a href="capabilities/support-protection.html"><i>05</i><span><b>Support &amp; protection</b></span></a>
-          <a class="navall" href="capabilities.html"><i>&mdash;</i><span><b>All capabilities &rarr;</b></span></a>
-          <div class="navfoot">Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</div>
-        </div>
-      </div>
-      <a href="work.html">Work</a>
-      <a href="lab.html">The Bench</a>
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Bapper Labs, home"><img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26"></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">How it works</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#questions">Questions</a>
       <a href="about.html">About</a>
     </nav>
-
-    <div class="navcta">
-      <a class="btn ghost" href="tel:+16162274477" aria-label="Call or text (616) 227-4477"><span class="lab-long">Call or text (616) 227-4477</span><span class="lab-short" aria-hidden="true">Call</span></a>
-      <a class="btn start" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
-    </div>
-
-    <button type="button" class="navtoggle" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
-      <i></i><i></i><i></i>
-    </button>
+    <a class="nav__tel" href="tel:+16162274477">(616) 227-4477</a>
+    <a class="nav__call" href="tel:+16162274477" aria-label="Call or text (616) 227-4477"><svg><use href="#tel"/></svg></a>
+    <a class="btn btn--pri btn--sm" href="start.html">Book a call</a>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu"><i></i></button>
   </div>
-
-  <div class="navdrawer" id="drawer">
-    <ul>
-      <li class="drawer-h"><span>Capabilities 01 / 05</span></li>
-      <li><a href="capabilities/ai-transformation.html"><i>01</i><span>AI transformation</span></a></li>
-      <li><a href="capabilities/development-integrations.html"><i>02</i><span>Development &amp; integrations</span></a></li>
-      <li><a href="capabilities/web-digital.html"><i>03</i><span>Web &amp; digital presence</span></a></li>
-      <li><a href="capabilities/marketing-performance.html"><i>04</i><span>Marketing &amp; performance</span></a></li>
-      <li><a href="capabilities/support-protection.html"><i>05</i><span>Support &amp; protection</span></a></li>
-      <li><a href="capabilities.html"><i>&mdash;</i><span>All capabilities</span></a></li>
-      <li><a href="work.html"><i>&mdash;</i><span>Work</span></a></li>
-      <li><a href="lab.html"><i>&mdash;</i><span>The Bench</span></a></li>
-      <li><a href="about.html"><i>&mdash;</i><span>About</span></a></li>
-      <li class="drawer-cta">
-        <a class="btn" href="tel:+16162274477">Call or text (616) 227-4477</a>
-        <a class="btn ghost" href="start.html">Start a project <span class="arw" aria-hidden="true">&rarr;</span></a>
-      </li>
-    </ul>
-  </div>
+  <nav class="nav__menu" id="navMenu" aria-label="Menu">
+    <a href="index.html#services">Services<svg><use href="#arr"/></svg></a>
+    <a href="index.html#process">How it works<svg><use href="#arr"/></svg></a>
+    <a href="index.html#work">Work<svg><use href="#arr"/></svg></a>
+    <a href="index.html#questions">Questions<svg><use href="#arr"/></svg></a>
+    <a href="about.html">About<svg><use href="#arr"/></svg></a>
+    <a href="start.html">Book a call<svg><use href="#arr"/></svg></a>
+    <a class="nav__menu-tel" href="tel:+16162274477">Call or text (616) 227-4477</a>
+  </nav>
+  <span class="nav__prog" id="prog" aria-hidden="true"></span>
 </header>
 
-<main class="legal">
+<main>
+
+<section class="phero phero--slim band" id="top">
+  <div class="hero__grid" data-par="0.12" aria-hidden="true"></div>
+  <div class="hero__glow" data-par="0.28" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow"><i>&#9670;</i> Legal &middot; Privacy</p>
+  </div>
+</section>
+
+<section class="paper pad" style="padding-top:clamp(40px,6vw,72px)">
+  <div class="wrap">
+<div class="legal">
 <p class="meta">Bapper Labs, doing business as Bapper · Sparta, Michigan · Effective September 19, 2026</p>
 <h1>Privacy Policy</h1>
 <p>Bapper Labs ("Bapper," "we," "us") builds phone, text, and paperwork systems for small businesses in West Michigan. This policy describes what we collect when you contact us, how we use it, and the choices you have.</p>
@@ -112,57 +101,44 @@
 <h2>Contact</h2>
 <p>Bapper Labs (Bapper) · Sparta, MI 49345 · (616) 227-4477 · hello@bapperlabs.com</p>
 <p>See also our <a href="terms.html">Terms and Conditions</a>.</p>
+</div>
+  </div>
+</section>
+
 </main>
 
-<!-- ==================================================== footer (spec 2) === -->
-<footer class="site">
-  <div class="wrap">
-    <img class="foot-mark" src="assets/lockup_white_2x.png" alt="Bapper" width="121" height="21">
-    <div class="foot-cols">
-      <div class="foot-col">
-        <h5>Capabilities</h5>
-        <ul>
-          <li><a href="capabilities/ai-transformation.html">AI transformation</a></li>
-          <li><a href="capabilities/development-integrations.html">Development &amp; integrations</a></li>
-          <li><a href="capabilities/web-digital.html">Web &amp; digital presence</a></li>
-          <li><a href="capabilities/marketing-performance.html">Marketing &amp; performance</a></li>
-          <li><a href="capabilities/support-protection.html">Support &amp; protection</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="lab.html">The Bench</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="start.html">Start a project</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="tel:+16162274477">(616) 227-4477</a></li>
-          <li><a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></li>
-          <li class="dimline">Call or text. Miss us and you can press 1 for a text back.</li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Sparta, MI</h5>
-        <ul>
-          <li class="dimline">Sparta, Michigan 49345</li>
-          <li class="dimline">Serving West Michigan</li>
-          <li><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></li>
-          <li><a href="sms-consent.html">SMS consent</a></li>
-        </ul>
-      </div>
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <img src="assets/lockup_white.png" alt="Bapper Labs" width="149" height="26" loading="lazy">
+      <p style="margin-top:14px">Sparta, Michigan 49345 &middot; Serving West Michigan</p>
+      <p>Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
+      <p><a href="tel:+16162274477">(616) 227-4477</a> &middot; <a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></p>
+      <p>Call or text. Miss us and you can press 1 for a text back.</p>
     </div>
-    <div class="foot-bottom">
-      <p class="recur">Fixed-scope installations &middot; Monthly service plans &middot; A reply within one business day</p>
-      <small>&copy; 2026 Bapper Labs &middot; Sparta, MI</small>
+    <div class="foot__navs">
+      <nav aria-label="Footer">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">How it works</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#questions">Questions</a>
+        <a href="about.html">About</a>
+        <a href="start.html">Book a call</a>
+      </nav>
+      <nav class="foot__more" aria-label="More pages">
+        <a href="capabilities.html">Capabilities</a>
+        <a href="work.html">All builds</a>
+        <a href="lab.html">The Bench</a>
+        <a href="missed-calls.html">Missed-call text-back</a>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Bapper Labs &middot; Sparta, MI</span>
+      <span><a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp; <a href="sms-consent.html">SMS consent</a></span>
     </div>
   </div>
 </footer>
 
-<script src="v2.js?v=20260927a"></script>
+<script src="site.js?v=20261118a"></script>
 </body>
 </html>
