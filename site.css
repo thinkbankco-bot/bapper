@@ -475,6 +475,8 @@ html:not(.js) .nav__toggle{display:none}
 .msg b{font-weight:500}
 .ba-foot{margin-top:14px;padding-top:12px;border-top:1px solid var(--bline);font-size:13px;color:var(--on-band-dim);line-height:1.6}
 .ba-handle,.ba-range,.ba-hint{display:none}
+.ba-drag{display:none}
+@media(min-width:900px){.ba-drag{display:inline}.ba-stack{display:none}}
 .ba-hint{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-band-dim);margin-top:12px;gap:14px;flex-wrap:wrap}
 @media(min-width:700px){.msg{max-width:74%}.ba-pane{padding:24px 22px 20px}}
 @media(min-width:900px){
