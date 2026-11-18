@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.className='js';</script>
-<link rel="stylesheet" href="site.css?v=20261118a">
+<link rel="stylesheet" href="site.css?v=20261118b">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -63,7 +63,7 @@
 <section class="phero band" id="top">
   <div class="hero__grid" data-par="0.12" aria-hidden="true"></div>
   <div class="hero__glow" data-par="0.28" aria-hidden="true"></div>
-  <div class="wrap">
+  <div class="wrap phero__grid">
     <div class="phero__copy" data-par="-0.06">
       <p class="eyebrow" data-r><i>&#9670;</i> Book a call</p>
       <h1 class="display split">Tell us what breaks first.</h1>
@@ -73,6 +73,11 @@
     </div>
       <p class="note" data-r style="--d:820ms">That number reaches us. If we miss your call, press 1 and you get a text back right away, from the same system we install.</p>
     </div>
+    <aside class="hpanel phero__side--wide" data-r="r" style="--d:300ms">
+      <p class="hpanel__h"><span>Reach us</span><b>Sparta, MI</b></p>
+      <div class="hpanel__rows"><div><span>Call</span><b><a href="tel:+16162274477">(616) 227-4477</a></b></div><div><span>Text</span><b><a href="sms:+16162274477">(616) 227-4477</a></b></div><div><span>Email</span><b><a href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></b></div><div><span>Written requests</span><b>A reply within one business day</b></div></div>
+      <p class="hpanel__foot">No newsletter, no drip, no calendar link. It reaches us directly.</p>
+    </aside>
   </div>
 </section>
 
@@ -89,6 +94,7 @@
 
 <section class="paper-2 pad" id="form">
   <div class="wrap">
+    <div class="formgrid">
     <div class="formpanel" id="start-panel">
       <p class="eyebrow" data-r style="margin-bottom:22px"><i>02</i> In writing</p>
 
@@ -166,6 +172,27 @@
 
       <p class="hero__meta"><span>Fixed-scope installations</span><span>Monthly service plans</span><span>A reply within one business day</span></p>
     </div>
+      <aside class="formside" aria-label="Other ways to reach us">
+        <div class="card card--flat" data-r="r">
+          <p class="mono">Prefer to talk?</p>
+          <a class="btn btn--pri" href="tel:+16162274477"><svg><use href="#tel"/></svg> Call or text (616) 227-4477</a>
+          <p>That number reaches us. If we miss your call, press 1 and you get a text back right away, from the same system we install.</p>
+        </div>
+        <div class="card card--flat" data-r="r" style="--d:80ms">
+          <p class="mono">Email</p>
+          <p><a class="formside__mail" href="mailto:hello@bapperlabs.com">hello@bapperlabs.com</a></p>
+          <p>Written requests get a reply within one business day.</p>
+        </div>
+        <div class="card card--flat" data-r="r" style="--d:160ms">
+          <p class="mono">What happens next</p>
+          <ol class="formside__next">
+            <li><b>We reply within one business day.</b></li>
+            <li><b>Free assessment.</b> Ninety minutes by phone or on site.</li>
+            <li><b>A one-page summary.</b> Yours whether or not you proceed.</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -203,7 +230,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=20261118a"></script>
+<script src="site.js?v=20261118b"></script>
 <script>
 (function () {
   var form = document.getElementById("start-form");

@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.className='js';</script>
-<link rel="stylesheet" href="site.css?v=20261118a">
+<link rel="stylesheet" href="site.css?v=20261118b">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -61,7 +61,7 @@
 <section class="phero band" id="top">
   <div class="hero__grid" data-par="0.12" aria-hidden="true"></div>
   <div class="hero__glow" data-par="0.28" aria-hidden="true"></div>
-  <div class="wrap">
+  <div class="wrap phero__grid">
     <div class="phero__copy" data-par="-0.06">
       <p class="eyebrow" data-r><i>&#9670;</i> Sparta, Michigan</p>
       <h1 class="display split">The call you can't take is the job you don't get.</h1>
@@ -73,6 +73,11 @@
     </div>
       <p class="note" data-r style="--d:820ms">That's a cell, not an office. If nobody picks up, press 1 and you'll get a text back right away &mdash; that's the thing we sell.</p>
     </div>
+    <aside class="hpanel phero__side--wide" data-r="r" style="--d:300ms">
+      <p class="hpanel__h"><span>The press-1 text-back</span><b>One call</b></p>
+      <ol class="pflow"><li style="--i:0"><i>01</i><span><b>A call comes in</b><small>Four rings. Nobody free.</small></span></li><li style="--i:1"><i>02</i><span><b>Your greeting</b><small>Press 1 for a text back.</small></span></li><li style="--i:2"><i>03</i><span><b>The caller presses 1</b><small>Pressing 1 is the request for a text.</small></span></li><li style="--i:3"><i>04</i><span><b>One text goes out</b><small>In your shop&rsquo;s name, asking what broke and where.</small></span></li></ol>
+      <p class="hpanel__foot">Their answer lands on your phone as a normal text.</p>
+    </aside>
   </div>
 </section>
 
@@ -111,26 +116,24 @@
   </div>
 </section>
 
+<!-- "The recording" section, parked until the video exists. Restore it here and renumber the eyebrows after it.
 <section class="paper-2 pad" id="recording">
   <div class="wrap">
-    <div class="sec-head sec-head--split">
-      <div>
-        <p class="eyebrow" data-r><i>02</i> The recording</p>
-        <h2 class="h2 split" style="margin-top:16px">Forty seconds, no sound needed.</h2>
-      </div>
-      <p class="lede" data-r style="--d:120ms">A call comes in, nobody answers, the caller presses 1, a text goes back. That&rsquo;s the whole recording.</p>
-    </div>
-    <div class="placeholder" data-r>
+    <p class="eyebrow"><i>02</i> The recording</p>
+    <h2 class="h2">Forty seconds, no sound needed.</h2>
+    <p class="lede">A call comes in, nobody answers, the caller presses 1, a text goes back. That&rsquo;s the whole recording.</p>
+    <div class="placeholder">
       <p>The recording isn't made yet, so it isn't here yet. It goes up the day it exists and not a day before &mdash; we're not going to fake a video of our own product. Until then, call the number and ask us to walk you through it.</p>
     </div>
   </div>
 </section>
+-->
 
-<section class="paper pad" id="parts">
+<section class="paper-2 pad" id="parts">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="eyebrow" data-r><i>03</i> What gets installed</p>
+        <p class="eyebrow" data-r><i>02</i> What gets installed</p>
         <h2 class="h2 h2--wide split" style="margin-top:16px">Four moving parts. That&rsquo;s the whole thing.</h2>
       </div>
     </div>
@@ -143,11 +146,11 @@
   </div>
 </section>
 
-<section class="paper-2 pad" id="engagement">
+<section class="paper pad" id="engagement">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="eyebrow" data-r><i>04</i> The engagement</p>
+        <p class="eyebrow" data-r><i>03</i> The engagement</p>
         <h2 class="h2 split" style="margin-top:16px">How the engagement works.</h2>
       </div>
     </div>
@@ -172,11 +175,11 @@
   </div>
 </section>
 
-<section class="paper pad" id="questions">
+<section class="paper-2 pad" id="questions">
   <div class="wrap faq__grid">
     <div class="sec-head">
       <div>
-        <p class="eyebrow" data-r><i>05</i> Questions</p>
+        <p class="eyebrow" data-r><i>04</i> Questions</p>
         <h2 class="h2 split" style="margin-top:16px">The questions everybody asks.</h2>
       </div>
     </div>
@@ -197,11 +200,11 @@
   </div>
 </section>
 
-<section class="paper-2 pad" id="who">
+<section class="paper pad" id="who">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <p class="eyebrow" data-r><i>06</i> The studio</p>
+        <p class="eyebrow" data-r><i>05</i> The studio</p>
         <h2 class="h2 split" style="margin-top:16px">Who you&rsquo;d be dealing with.</h2>
       </div>
     </div>
@@ -227,7 +230,7 @@
   <img class="cta__mark" src="assets/monogram_white.png" alt="" width="141" height="123" loading="lazy">
   <div class="cta__rings" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <p class="eyebrow" data-r><i>07</i> Start here</p>
+    <p class="eyebrow" data-r><i>06</i> Start here</p>
     <h2 class="split" id="cta-h">Start with the assessment.</h2>
     <p class="lede" data-r style="--d:120ms">Ninety minutes by phone or on site. One page naming the highest-value system to build first, and the written target it would be measured against. The summary is yours either way.</p>
     <div class="cta__btns" data-r style="--d:200ms">
@@ -272,6 +275,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=20261118a"></script>
+<script src="site.js?v=20261118b"></script>
 </body>
 </html>

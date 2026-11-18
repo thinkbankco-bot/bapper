@@ -97,14 +97,16 @@
     if (!nav || !btn || !menu) return;
     function set(open) {
       nav.classList.toggle('is-open', open);
+      d.documentElement.classList.toggle('nav-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     }
     btn.addEventListener('click', function () { set(!nav.classList.contains('is-open')); });
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    nav.addEventListener('click', function (e) { if (e.target === nav) set(false); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('is-open')) { set(false); btn.focus(); } });
     d.addEventListener('click', function (e) { if (nav.classList.contains('is-open') && !nav.contains(e.target)) set(false); });
-    window.addEventListener('resize', function () { if (window.innerWidth >= 900) set(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 1000) set(false); });
   });
 
   /* ---------- header: mark the section in view (same-page links only) ---------- */
@@ -170,37 +172,40 @@
 
   /* ---------- before/after slider (The Bench) ----------
      The control is a native range input, so dragging, arrow keys, Home/End and
-     assistive technology all work. Under 900px the two panes simply stack. */
+     assistive technology all work. The handle sets how wide each pane is.
+     Under 900px the two panes simply stack. */
   run(function () {
     $$('.ba').forEach(function (root) {
       var range = $('.ba-range', root), a = $('.ba-before', root), b = $('.ba-after', root);
       if (!range || !a || !b) return;
       root.classList.add('is-live');
       function wide() { return mm('(min-width: 900px)'); }
-      function pairs() {
-        var out = [[$('.ba-lab', a), $('.ba-lab', b)]];
-        var ma = $$('.thread .msg', a), mb = $$('.thread .msg', b), n = Math.min(ma.length, mb.length);
-        for (var i = 0; i < n; i++) out.push([ma[i], mb[i]]);
-        return out;
-      }
-      function align(on) {
-        var ps = pairs();
-        ps.forEach(function (p) { if (p[0]) p[0].style.minHeight = ''; if (p[1]) p[1].style.minHeight = ''; });
+      var panes = $('.ba-panes', root), MIN = 30, MAX = 70;
+      /* Each pane only ever occupies its own side of the handle, so the two
+         conversations can never overlap. The height is fixed to the tallest
+         layout in range so dragging does not make the page jump. */
+      function fit(on) {
+        if (!panes) return;
+        panes.style.minHeight = '';
         if (!on) return;
-        ps.forEach(function (p) {
-          if (!p[0] || !p[1]) return;
-          var h = Math.ceil(Math.max(p[0].getBoundingClientRect().height, p[1].getBoundingClientRect().height));
-          if (h > 0) { p[0].style.minHeight = h + 'px'; p[1].style.minHeight = h + 'px'; }
+        var keep = root.style.getPropertyValue('--pos'), h = 0;
+        [MIN, 50, MAX].forEach(function (p) {
+          root.style.setProperty('--pos', p + '%');
+          h = Math.max(h, panes.getBoundingClientRect().height);
         });
+        root.style.setProperty('--pos', keep || '50%');
+        if (h > 0) panes.style.minHeight = Math.ceil(h) + 'px';
       }
       function paint() {
         var v = parseFloat(range.value); if (isNaN(v)) v = 50;
-        root.style.setProperty('--pos', v + '%');
-        range.setAttribute('aria-valuetext', v <= 2 ? 'the same call with the system installed'
-          : v >= 98 ? 'the call with nothing in place'
-          : Math.round(v) + ' percent without the system, the rest with it');
+        var c = clamp(v, MIN, MAX);
+        if (c !== v) range.value = c;
+        root.style.setProperty('--pos', c + '%');
+        range.setAttribute('aria-valuetext', c <= MIN ? 'mostly the same call with the system installed'
+          : c >= MAX ? 'mostly the call with nothing in place'
+          : Math.round(c) + ' percent without the system, the rest with it');
       }
-      function sync() { var on = wide(); align(on); if (on) paint(); }
+      function sync() { var on = wide(); fit(on); if (on) paint(); }
       range.addEventListener('input', paint);
       range.addEventListener('change', paint);
       range.addEventListener('touchmove', function (ev) { if (ev.cancelable) ev.preventDefault(); }, { passive: false });
