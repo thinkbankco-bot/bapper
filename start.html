@@ -166,7 +166,7 @@
     </div>
 
     <label class="field">
-      <span>A number I can call or text<small>Required. This is how we would reply, which is the whole point.</small></span>
+      <span>Best number to reach you<small>We'll call, or text if you check the box below.</small></span>
       <input type="tel" name="phone" autocomplete="tel" required>
     </label>
 
@@ -186,7 +186,8 @@
     </label>
 
     <input type="hidden" name="source" value="site_start">
-    <p class="frm-fine" id="sms-consent">By sending this, you agree to get a text reply from Bapper Labs at the number you gave. Message frequency varies, message and data rates may apply. Reply STOP to opt out, HELP for help. <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+    <label class="frm-fine frm-check" id="sms-consent"><input type="checkbox" name="sms_consent" value="yes"> <span>Yes, text me about my request. Bapper Labs will send texts about your inquiry. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of service.</span></label>
+    <p class="frm-fine frm-links"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a></p>
     <button class="btn" type="submit" id="start-submit">Send it</button>
     <p class="frm-fine">No newsletter, no drip, no calendar link. It reaches us directly.</p>
     <p class="frm-err" id="start-err" hidden></p>
@@ -294,6 +295,7 @@
 
     var action = form.getAttribute("data-endpoint") || "";
     var payload = new FormData(form);
+    payload.set("sms_consent", form.querySelector('input[name="sms_consent"]').checked ? "yes" : "no");
 
     if (!action) {
       /* No receiver deployed yet: hand the message to the phone's SMS app, or mail on desktop. */
@@ -304,6 +306,7 @@
         "Bapper: " + f("business") + " / " + f("name") + " / " + f("city"),
         "Breaks first: " + (pickedText || "-"),
         "Number: " + f("phone"),
+        "Texts OK: " + (form.querySelector('input[name="sms_consent"]').checked ? "yes" : "no"),
         f("email") ? "Email: " + f("email") : "",
         f("note") ? "Note: " + f("note") : ""
       ].filter(Boolean);

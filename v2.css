@@ -509,6 +509,9 @@ header.site.is-compact .btn.ghost:hover { background: rgba(11,22,51,.03); }
 .frm .row2 { display: grid; gap: 14px; }
 .frm-fine { font-size: 13px; color: var(--on-band-dim); line-height: 1.7; }
 .frm-fine a { color: var(--on-band); text-decoration: underline; }
+.frm-check { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 0; cursor: pointer; }
+.frm .frm-check input { flex: none; width: 18px; height: 18px; margin: 4px 0 0; padding: 0; accent-color: var(--accent); }
+.frm-links { margin: 4px 0 14px 28px; }
 .frm-err { font-size: 14px; color: #ffb9ad; }
 .frm-done { border: 1px solid var(--line-band-2); border-radius: var(--r); padding: 24px; margin-top: 26px; background: var(--band-2); }
 .frm-done h3 { color: var(--on-band); }

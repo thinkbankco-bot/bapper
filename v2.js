@@ -502,12 +502,15 @@
 
       var action = form.getAttribute("data-endpoint") || "";
       var payload = new FormData(form);
+      var smsBox = form.querySelector('input[name="sms_consent"]');
+      if (smsBox) { payload.set("sms_consent", smsBox.checked ? "yes" : "no"); }
       var f = function (k) { return (payload.get(k) || "").toString().trim(); };
 
       if (!action) {
         var lines = [
           "Bapper: " + f("name") + (f("website") ? " / " + f("website") : ""),
           f("phone") ? "Phone: " + f("phone") : "",
+          form.querySelector('input[name="sms_consent"]') ? "Texts OK: " + (form.querySelector('input[name="sms_consent"]').checked ? "yes" : "no") : "",
           f("email") ? "Email: " + f("email") : "",
           f("message") ? "Message: " + f("message") : ""
         ].filter(Boolean);
