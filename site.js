@@ -224,7 +224,12 @@
     var form = d.getElementById('home-form'); if (!form) return;
     var done = d.getElementById('home-done'), err = d.getElementById('home-err'), btn = d.getElementById('home-submit');
     if (!done || !btn) return;
-    function showDone() {
+    function showDone(handedOff) {
+      if (handedOff) {
+        var h = done.querySelector('h3, h4'), t = done.querySelector('p');
+        if (h) h.textContent = 'Almost there.';
+        if (t) t.textContent = 'Your texting or email app should have opened with your message filled in. Press send there and it reaches us. If nothing opened, call or text (616) 227-4477.';
+      }
       form.hidden = true; done.hidden = false;
       try { done.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' }); } catch (e) {}
     }
@@ -252,11 +257,11 @@
         window.location.href = mobile
           ? 'sms:+16162274477?&body=' + encodeURIComponent(body)
           : 'mailto:hello@bapperlabs.com?subject=' + encodeURIComponent('Bapper: ' + (f('name') || 'assessment')) + '&body=' + encodeURIComponent(body);
-        setTimeout(showDone, 800);
+        setTimeout(function () { showDone(true); }, 800);
         return;
       }
       fetch(action, { method: 'POST', body: payload })
-        .then(function () { showDone(); })
+        .then(function (r) { if (!r.ok) throw new Error('status ' + r.status); showDone(false); })
         .catch(function () {
           btn.disabled = false;
           btn.textContent = 'Send it';
